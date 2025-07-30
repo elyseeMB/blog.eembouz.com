@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eembouz.com/sitemap-index.xml
+Sitemap: https://blog.eembouz.com/sitemap-index.xml
