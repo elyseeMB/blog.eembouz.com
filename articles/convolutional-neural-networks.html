@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="fr"> <title>Convolutional neural networks | Blog</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Un réseau neuronal convolutionnel (Convolutional Neural Network, ou CNN) est un type d’algorithme d’apprentissage profond supervisé (deep learning) qui confère à un ordinateur une forme de « vision » : il peut ainsi analyser et reconnaître des objets du monde visuel."><link rel="canonical" href="https://blog.eembouz.com/articles/convolutional-neural-networks.html"><meta name="author" content="elysee"><meta property="article:published_time" content="2025-08-12T00:00:00.000Z"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-512.png" sizes="512x512"><link rel="icon" type="image/svg+xml" href="https://blog.eembouz.com/favicon.svg"><link rel="apple-touch-icon" href="https://blog.eembouz.com/apple-touch-icon.png"><link rel="manifest" href="https://blog.eembouz.com/site.webmanifest"><link rel="sitemap" href="https://blog.eembouz.com/sitemap-index.xml"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-96x96.png" sizes="96x96"><link rel="apple-touch-icon" sizes="180x180" href="https://blog.eembouz.com/apple-touch-icon.png"><meta name="theme-color" content="#1e1e1e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Domine:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Pridi:wght@200;300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oranienbaum&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"><meta property="og:type" content="article"><meta property="og:site_name" content="Elysee-Mboussa"><meta property="og:title" content="Convolutional neural networks | Blog"><meta property="og:type" content="website"><meta property="og:description" content="Un réseau neuronal convolutionnel (Convolutional Neural Network, ou CNN) est un type d’algorithme d’apprentissage profond supervisé (deep learning) qui confère à un ordinateur une forme de « vision » : il peut ainsi analyser et reconnaître des objets du monde visuel."><meta property="og:image" content="/iclh-diagram-convolutional-neural-networks.png"><meta property="og:url" content="https://blog.eembouz.com/articles/convolutional-neural-networks.html"><meta name="robots" content="index, follow"><meta name="google-site-verification" content="hyeUNyeanb3BYVbCmMJKMIiXusraMSWPSCNMBn83Sk8"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Convolutional neural networks | Blog"><meta name="twitter:description" content="Un réseau neuronal convolutionnel (Convolutional Neural Network, ou CNN) est un type d’algorithme d’apprentissage profond supervisé (deep learning) qui confère à un ordinateur une forme de « vision » : il peut ainsi analyser et reconnaître des objets du monde visuel."><meta name="twitter:image" content="/iclh-diagram-convolutional-neural-networks.png"><meta name="twitter:site" content="@EmmanuelitoElysee"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Emmanuelito elysee",
+    "url": "https://blog.eembouz.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.eembouz.com",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Emmanuelito Elysee",
+    "url": "https://blog.eembouz.com/",
+    "logo": "https://blog.eembouz.com/favicon-512.png"
+  }
+</script><script type="module" src="/_astro/Scripts.astro_astro_type_script_index_0_lang.BBugtUs8.js"></script><style>span[data-astro-cid-rafwukvt]{font-family:JetBrains Mono!important;letter-spacing:-.5px}
+body .page-wrapper[data-astro-cid-eomsrdgo]{background:red!important}.container[data-astro-cid-eomsrdgo],.wrapper-content[data-astro-cid-eomsrdgo]{overflow:visible}.article__paragraph[data-astro-cid-eomsrdgo]{padding-block:1rem}.description[data-astro-cid-eomsrdgo]{padding-block:3rem}.info[data-astro-cid-eomsrdgo]{display:grid;grid-template-columns:1fr;gap:1rem}.wrapper-content[data-astro-cid-eomsrdgo]{max-width:700px;display:block}.wrapper-outline[data-astro-cid-eomsrdgo]{display:none}@media screen and (min-width:1200px){.wrapper-content[data-astro-cid-eomsrdgo]{width:100%;display:grid!important;grid-template-columns:1fr 550px 1fr!important;padding:0}.wrapper-outline[data-astro-cid-eomsrdgo]{display:block;grid-column:3;margin-bottom:5rem}.content[data-astro-cid-eomsrdgo]{width:550px;grid-column:2;padding-bottom:5rem}}.content[data-astro-cid-eomsrdgo]{padding-bottom:5rem}h1[data-astro-cid-eomsrdgo]{text-align:left;padding-top:2rem}.cover[data-astro-cid-eomsrdgo]{width:100%}.meta[data-astro-cid-eomsrdgo]{display:flex;flex-direction:column;font-size:.9rem;gap:.5rem;padding-bottom:4rem;font-family:JetBrains Mono!important;>[data-astro-cid-eomsrdgo]{font-family:JetBrains Mono!important;letter-spacing:-.5px}}@media screen and (max-width:750px){.wrapper-content[data-astro-cid-eomsrdgo]{padding-inline:var(--container-padding)}}@media screen and (max-width:590px){.container-narrow[data-astro-cid-eomsrdgo] .info[data-astro-cid-eomsrdgo] .tags[data-astro-cid-eomsrdgo]{align-items:flex-start;flex-direction:column}}@media screen and (min-width:1300px){.heading[data-astro-cid-eomsrdgo]{img{max-height:500px}}}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media(prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style>
+<link rel="stylesheet" href="/_astro/505.C6OAiFHz.css"><style>[data-astro-transition-scope="astro-jd5qhzdj-1"] { view-transition-name: article-title-convolutional-neural-networks; }@layer astro { ::view-transition-old(article-title-convolutional-neural-networks) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(article-title-convolutional-neural-networks) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(article-title-convolutional-neural-networks) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(article-title-convolutional-neural-networks) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><body> <div class="bg-noise"> <div class="page-wrapper"> <div class="container-narrow" data-astro-cid-j2devmb2> <header data-astro-cid-6sev2il6> <div class="container" data-astro-cid-6sev2il6> <div class="wrapper" data-astro-cid-6sev2il6> <div class="flex" data-astro-cid-6sev2il6> <div class="logo" data-astro-cid-6sev2il6> <a href="/" data-astro-cid-6sev2il6> <svg width="40" height="40" id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" data-astro-cid-6sev2il6> <defs data-astro-cid-6sev2il6> <style>
+                  .cls-1,
+                  .cls-2 {
+                    stroke-width: 0px;
+                  }
+
+                  .cls-2 {
+                    fill: #007aec;
+                  }
+                </style> </defs> <circle class="cls-2" cx="6" cy="6" r="5.5" data-astro-cid-6sev2il6></circle> <path class="cls-1" d="m6,1c2.76,0,5,2.24,5,5s-2.24,5-5,5S1,8.76,1,6,3.24,1,6,1m0-1C2.69,0,0,2.69,0,6s2.69,6,6,6,6-2.69,6-6S9.31,0,6,0h0Z" data-astro-cid-6sev2il6></path> </svg></a> </div>  <div class="actions" data-astro-cid-j2devmb2> <a href="https://eembouz.com" data-astro-cid-j2devmb2> Portfolio</a> <a href="/articles" data-astro-cid-j2devmb2> tous mes articles </a> </div>  </div> </div> </div> </header>  </div>   <section data-markdown data-astro-cid-eomsrdgo> <div class="container" data-astro-cid-eomsrdgo> <div class="container-narrow" data-astro-cid-eomsrdgo> <div class="info" data-astro-cid-eomsrdgo> <h1 data-astro-cid-eomsrdgo data-astro-transition-scope="astro-jd5qhzdj-1">Convolutional neural networks</h1> <div class="meta" data-astro-cid-eomsrdgo> <span data-astro-cid-eomsrdgo> 12 août 2025 ·
+Elysee </span> <span data-astro-cid-rafwukvt> 9 min de lecture </span>  <div class="tags" data-astro-cid-eomsrdgo> <div class="tag" data-astro-cid-eomsrdgo>ia</div><div class="tag" data-astro-cid-eomsrdgo>Deep learning</div> </div> </div> </div> </div> </div> <div class="container" data-astro-cid-eomsrdgo> <div class="container-narrow" data-astro-cid-eomsrdgo> <div class="heading" data-astro-cid-eomsrdgo> <div class="cover" data-astro-cid-eomsrdgo> <!-- <img src={thumbnail} alt="" /> --> </div> </div> </div> </div> <div class="container" data-astro-cid-eomsrdgo> <div class="wrapper-content" data-astro-cid-eomsrdgo> <div class="content prose prose-md" data-astro-cid-eomsrdgo> <p><strong>Du sport à la médecine, en passant par les transports et la sécurité…</strong><br/>
+Vous êtes-vous déjà demandé comment une caméra de surveillance parvient à reconnaître un visage dans une foule, comment un scanner médical détecte une tumeur dissimulée, ou comment un système suit la trajectoire d’un train avec une précision millimétrique ?</p>
+<h2 id="introduction">Introduction</h2>
+<p>Un <strong>réseau neuronal convolutionnel</strong> (<em>Convolutional Neural Network</em>, ou CNN) est un type d’algorithme d’apprentissage profond supervisé (<em>deep learning</em>) qui confère à un ordinateur une forme de « vision » : il peut ainsi analyser et reconnaître des objets du monde visuel.</p>
+<p>Le <strong>réseau neuronal convolutionnel</strong> (<em>Convolutional Neural Network</em>, CNN), par analogie, se réfère au fonctionnement des réseaux neuronaux biologiques et constitue, par conséquent, une extension du réseau neuronal artificiel (<em>Artificial Neural Network</em>, ANN). Il trouve ses applications principalement dans la reconnaissance et l’analyse d’images.</p>
+<p>En s’appuyant sur les principes de l’algèbre linéaire, et plus particulièrement sur la manipulation de matrices, les réseaux neuronaux convolutionnels appliquent des opérations de convolution et de transformation afin de détecter et extraire des motifs pertinents au sein d’une image.</p>
+<h2 id="comment-fonctionne-le-cnn">Comment fonctionne le CNN</h2>
+<p>Le fonctionnement d’un <strong>réseau neuronal convolutionnel</strong> (<em>Convolutional Neural Network</em>, CNN) repose sur une architecture composée de trois types de couches principales. Ces couches traitent en entrée (<em>input</em>) des données structurées spatialement, telles que des images, des spectrogrammes audio ou des séquences vidéo :</p>
+<ul>
+<li><strong>Couche convolutionnelle</strong> (<em>Convolutional layer</em>)</li>
+<li><strong>Couche de sous-échantillonnage ou de pooling</strong> (<em>Pooling layer</em>)</li>
+<li><strong>Couche entièrement connectée</strong> (<em>Fully connected layer</em>)</li>
+</ul>
+<h2 id="couche-convolutionnelle-convolutional-layer"><strong>Couche convolutionnelle (Convolutional layer)</strong></h2>
+<p>La couche convolutionnelle est le cœur principal du réseau de neurones, c’est là où la majorité des calculs sont effectués. Son fonctionnement nécessite des composants tels que :</p>
+<ul>
+<li>Des données d’entrée (input data)</li>
+<li>Un filtre (noyau ou kernel)</li>
+<li>Une carte de caractéristiques (feature map)</li>
+</ul>
+<h3 id="fonctionnement">Fonctionnement :</h3>
+<ul>
+<li><strong>Convolution</strong> (produit scalaire)</li>
+<li><strong>ReLU</strong> (supprime les valeurs négatives)</li>
+<li><strong>Pooling</strong> (réduction de taille)</li>
+<li>Répéter ces étapes</li>
+<li><strong>Classification finale</strong></li>
+</ul>
+<p><strong>Données d’entrée (Input)</strong> : Prenant pour entrée une image de taille 24×24 pixels, qui sera transformée en matrice de pixels 3D correspondant au nombre de pixels respectifs de l’image. Cela veut dire que l’input (la donnée d’entrée) est représenté en hauteur, largeur et profondeur qui correspondent aux caractéristiques RVB de l’image.</p>
+<p><strong>Filtre (noyau)</strong> : Le filtre est une matrice de poids qui se déplace sur l’image afin d’en détecter les formes et caractéristiques. Ce processus est connu sous le nom d’opération de convolution.</p>
+<ul>
+<li>Les contours</li>
+<li>Les lignes</li>
+<li>Les textures</li>
+<li>Les formes géométriques</li>
+<li>Des caractéristiques plus complexes dans les couches profondes</li>
+</ul>
+<p>Sa taille peut varier, bien que par défaut elle soit de 3×3, il en existe des 5×5, ou 7×7 pixels. Le <strong>champ récepteur</strong> correspond à la zone de l’image d’entrée qui influence un neurone de sortie.</p>
+<p>Le filtre est placé sur une zone de l’image et le produit scalaire est calculé en fonction des pixels d’entrée et du filtre. Cette valeur est alors sauvegardée dans une carte de caractéristiques (feature map). Après cela, le filtre est alors déplacé d’un pas, répétant le processus jusqu’à ce que toute la surface des pixels de l’image soit traitée.</p>
+<p>Certains hyper-paramètres du filtre restent fixes durant le processus, par contre les <strong>poids</strong> sont ajustés afin de maximiser les performances via les opérations de rétropropagation et de descente de gradient. Il existe trois hyper-paramètres qui sont primordiaux dans l’obtention d’un résultat favorable et qui influencent le volume de sortie (output) ; ils doivent être définis bien avant le processus.</p>
+<ol>
+<li>
+<p><strong>Number of filters (nombre de filtres)</strong> : Affecte la profondeur de la sortie. Par exemple, trois filtres distincts produiraient trois cartes de caractéristiques différentes, créant ainsi une profondeur de trois. <em>Chaque filtre agit comme un détecteur spécialisé (contours, textures, formes) et produit sa propre carte de caractéristiques, ces cartes s’empilent pour former la profondeur de sortie.</em></p>
+</li>
+<li>
+<p><strong>Stride (pas ou foulée)</strong> : Est la distance, ou le nombre de pixels, sur laquelle le noyau se déplace sur la matrice d’entrée. Bien que des valeurs de foulée de deux ou plus soient rares, une foulée plus grande donne une sortie plus petite. <em>Une foulée de 1 signifie que le filtre se déplace pixel par pixel (examen détaillé), tandis qu’une foulée de 2 fait sauter un pixel à chaque déplacement (examen plus rapide, image plus petite).</em></p>
+</li>
+<li>
+<p><strong>Zero-padding (rembourrage zéro)</strong> : Est généralement utilisé lorsque les filtres ne correspondent pas à l’image d’entrée. Cela met à zéro tous les éléments qui se trouvent en dehors de la matrice d’entrée, produisant une sortie plus grande ou de taille égale. Il existe trois types de rembourrage :</p>
+<ul>
+<li><strong>Rembourrage valide :</strong> C’est ce qu’on appelle également l’absence de rembourrage. Dans ce cas, la dernière convolution est abandonnée si les dimensions ne s’alignent pas. <em>(Si les pièces du puzzle ne rentrent pas au bord, on les abandonne)</em></li>
+<li><strong>Rembourrage identique :</strong> Ce remplissage garantit que la couche de sortie a la même taille que la couche d’entrée. <em>(On ajoute des pièces vides autour pour que tout rentre parfaitement)</em></li>
+<li><strong>Rembourrage complet :</strong> Ce type de remplissage augmente la taille de la sortie en ajoutant des zéros à la bordure de l’entrée. <em>(On ajoute encore plus de pièces vides pour obtenir une image plus grande)</em></li>
+</ul>
+</li>
+</ol>
+<p><strong>Après l’opération de convolution, le CNN applique immédiatement la fonction ReLU</strong> (<strong>Re</strong>ctified <strong>L</strong>inear <strong>U</strong>nit - Unité Linéaire Rectifiée). Cette fonction d’activation agit comme un filtre sélectif qui élimine les signaux faibles (valeurs négatives) pour ne conserver que les activations significatives (valeurs positives).</p>
+<img src="/Relu-activation-function.webp" alt="Fonction d'activation ReLU"/>
+<p><strong>Principe de fonctionnement :</strong></p>
+<ul>
+<li>Valeur positive → conservée telle quelle</li>
+<li>Valeur négative → transformée en zéro</li>
+</ul>
+<p><strong>Formule :</strong> ReLU(x) = max(0, x)</p>
+<p><strong>Exemple pratique :</strong>
+Carte de caractéristiques avant ReLU : <code>[-2, 5, -1, 8, -3, 4]</code>
+Carte de caractéristiques après ReLU : <code>[0, 5, 0, 8, 0, 4]</code></p>
+<p><strong>Impact sur l’apprentissage :</strong> L’introduction de cette non-linéarité est cruciale car elle permet au réseau de modéliser des relations complexes entre les caractéristiques. Sans ReLU, le CNN serait limité à des transformations linéaires et ne pourrait pas détecter des motifs sophistiqués comme les relations spatiales entre les éléments d’un visage (distance œil-nez, configuration bouche-joues) ou d’autres subtilités visuelles complexes.</p>
+<p>Cette étape transforme donc un simple calcul mathématique en un véritable processus de reconnaissance intelligent.</p>
+<img src="/iclh-diagram-convolutional-neural-networks.png" alt="Diagramme des réseaux neuronaux convolutionnels"/>
+<h3 id="couche-convolutive-supplémentaire">Couche convolutive supplémentaire</h3>
+<p>Il est fréquent qu’une hiérarchisation de couches soit appliquée pour analyser progressivement la complexité croissante d’une image. Cette architecture en cascade permet à la structure du CNN de s’adapter intelligemment : les couches ultérieures peuvent exploiter les informations des champs récepteurs des couches précédentes, créant ainsi une véritable hiérarchie de détection.</p>
+<p><strong>Principe de la hiérarchie des caractéristiques :</strong></p>
+<ul>
+<li><strong>Couches initiales</strong> : Détectent les caractéristiques de bas niveau (contours, lignes, textures simples)</li>
+<li><strong>Couches intermédiaires</strong> : Combinent ces éléments pour identifier des formes plus complexes (angles, courbes, motifs géométriques)</li>
+<li><strong>Couches profondes</strong> : Reconnaissent des parties d’objets spécifiques (roues, guidons, cadres)</li>
+<li><strong>Couches finales</strong> : Assemblent ces parties pour identifier l’objet complet (vélo, voiture, visage)</li>
+</ul>
+<p><strong>Exemple concret :</strong> Prenons la reconnaissance d’un vélo. Le CNN procède par étapes :</p>
+<ol>
+<li>Détection des cercles et lignes droites</li>
+<li>Identification de formes circulaires (roues potentielles)</li>
+<li>Reconnaissance du guidon et du cadre</li>
+<li>Association finale : “roues + guidon + cadre = vélo”</li>
+</ol>
+<p>Cette approche hiérarchique permet au réseau de construire une compréhension progressive de l’image, où chaque couche affine et enrichit l’analyse de la précédente. In fine, la couche convolutionnelle convertit l’image en valeurs numériques structurées, permettant au réseau neuronal d’interpréter et d’extraire les motifs pertinents pour la classification finale.</p>
+<img src="/hierarchy.png" alt="Hiérarchie des caractéristiques CNN"/>
+<h2 id="couche-de-sous-échantillonnage-ou-de-pooling-pooling-layer"><strong>Couche de sous-échantillonnage ou de pooling</strong> (<em>Pooling layer</em>)</h2>
+<p>Dans cette étape du processus CNN, les informations collectées sont réduites et regroupées afin de diminuer la dimensionnalité des données. Dans le même processus que la couche convolutive, elle applique un filtre qui, à l’inverse de la couche convolutive, n’a pas de poids. Une fonction d’agrégation est appliquée aux valeurs du champ récepteur afin de remplir le tableau de sortie. <strong>Cette fonction d’agrégation constitue le paramètre principal configurable qui détermine le type de pooling utilisé.</strong></p>
+<p><strong>Objectifs principaux :</strong></p>
+<ul>
+<li>Réduire la taille des données</li>
+<li>Diminuer le nombre de paramètres</li>
+<li>Conserver les caractéristiques importantes</li>
+</ul>
+<p><strong>Les deux principaux types de pooling (fonctions d’agrégation) :</strong></p>
+<p><strong>1. Max Pooling (Regroupement maximal) :</strong></p>
+<ul>
+<li>Fonction d’agrégation : <code>f(région) = max(valeurs)</code></li>
+<li>Sélectionne la <strong>valeur maximale</strong> dans chaque région du champ récepteur</li>
+<li>Conserve les caractéristiques les plus saillantes</li>
+<li>Plus couramment utilisé car il préserve les contours et détails importants</li>
+</ul>
+<p><strong>2. Average Pooling (Regroupement moyen) :</strong></p>
+<ul>
+<li>Fonction d’agrégation : <code>f(région) = moyenne(valeurs)</code></li>
+<li>Calcule la <strong>moyenne arithmétique</strong> de toutes les valeurs dans le champ récepteur</li>
+<li>Lisse les données en réduisant le bruit</li>
+<li>Moins utilisé mais utile pour certaines applications spécifiques</li>
+</ul>
+<h2 id="visualisation">Visualisation</h2>
+<h4 id="région-22-organisée-comme-une-matrice">Région 2×2 organisée comme une matrice :</h4>
+<img src="/Sans-titre-2025-06-23-2323 (2).png" alt="Région 2x2 organisée en matrice"/>
+<h2 id="calculs-selon-le-type-de-pooling">Calculs selon le type de pooling :</h2>
+<p><strong>Max Pooling :</strong></p>
+<ul>
+<li>On regarde toutes les valeurs : <code>1, 3, 2, 4</code></li>
+<li>On prend la <strong>plus grande</strong> : <code>max(1, 3, 2, 4) = 4</code></li>
+<li><strong>Résultat : 4</strong></li>
+</ul>
+<p><strong>Average Pooling :</strong></p>
+<ul>
+<li>On additionne toutes les valeurs : <code>1 + 3 + 2 + 4 = 10</code></li>
+<li>On divise par le nombre de valeurs : <code>10 ÷ 4 = 2.5</code></li>
+<li><strong>Résultat : 2.5</strong></li>
+</ul>
+<h2 id="visualisation-du-processus">Visualisation du processus :</h2>
+<img src="/Sans-titre-2025-06-23-2323 (3).png" alt="Visualisation du processus de pooling"/>
+<p>Le filtre de pooling “regarde” cette région 2×2 et la <strong>résume en une seule valeur</strong> selon la fonction d’agrégation choisie.</p>
+<p>Ces paramètres (type de fonction d’agrégation, taille du filtre, stride) sont configurables avant l’entraînement selon les besoins spécifiques du modèle, permettant d’adapter le comportement du pooling à la tâche de classification visée.</p>
+<h2 id="couche-entièrement-connectée-fully-connected-layer"><strong>Couche entièrement connectée</strong> (<em>Fully connected layer</em>)</h2>
+<p>Cette couche effectue une classification en fonction des caractéristiques extraites des couches précédentes et de leurs filtres. Elle applique une fonction d’activation (généralement <strong>softmax</strong>) qui permet de convertir les données en <strong>probabilités</strong> : chaque classe possible reçoit un score entre 0 et 1, et la <strong>somme de toutes les probabilités égale 1</strong>.</p>
+<h3 id="exemple">Exemple :</h3>
+<p>Pour reconnaître des animaux :</p>
+<ul>
+<li>Chat : 0.7 (70% de probabilité)</li>
+<li>Chien : 0.2 (20% de probabilité)</li>
+<li>Oiseau : 0.1 (10% de probabilité)</li>
+<li><strong>Total : 0.7 + 0.2 + 0.1 = 1.0</strong></li>
+</ul>
+<p>La classe avec la <strong>plus haute probabilité</strong> (ici “Chat” avec 0.7) est la prédiction finale.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Les <strong>réseaux neuronaux convolutionnels</strong> (CNN) constituent une architecture d’apprentissage profond particulièrement efficace pour le traitement et l’analyse d’images. Leur fonctionnement repose sur trois composants principaux : les couches convolutionnelles qui extraient les caractéristiques, les couches de pooling qui réduisent la dimensionnalité, et les couches entièrement connectées qui effectuent la classification finale.</p>
+<h3 id="architecture-et-performances">Architecture et performances</h3>
+<p>Cette structure hiérarchique permet aux CNN de détecter progressivement des motifs de plus en plus complexes, depuis les contours simples jusqu’aux objets complets. Les hyper-paramètres configurables (nombre de filtres, stride, padding) offrent une flexibilité d’adaptation selon les besoins spécifiques de chaque application.</p>
+<h3 id="applications-pratiques">Applications pratiques</h3>
+<p>Les CNN trouvent aujourd’hui des applications concrètes dans de nombreux secteurs : diagnostic médical par imagerie, systèmes de surveillance automatisée, contrôle qualité industriel, et véhicules autonomes. Leur capacité à traiter efficacement de grandes quantités de données visuelles en fait un outil incontournable pour ces domaines.</p>
+<h3 id="perspectives-techniques">Perspectives techniques</h3>
+<p>L’optimisation continue des architectures CNN, combinée à l’amélioration des capacités de calcul, permet d’envisager des applications plus complexes et une précision accrue dans les tâches de reconnaissance d’images. La compréhension de ces mécanismes fondamentaux reste essentielle pour développer et implémenter efficacement ces solutions technologiques.</p> </div> <div class="wrapper-outline" data-astro-cid-eomsrdgo> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="ZVczvm" component-url="/_astro/Outline.DpbtxMXy.js" component-export="Outline" renderer-url="/_astro/client.BlaPJyZK.js" props="{&quot;data-astro-cid-eomsrdgo&quot;:[0,true]}" ssr client="load" opts="{&quot;name&quot;:&quot;Outline&quot;,&quot;value&quot;:true}" await-children><div class="outline__wrapper w-max"><ul class="flex flex-col gap-3 px-[4rem]  w-[350px]"></ul></div><!--astro:end--></astro-island> </div> </div> </div> </section>  <div class="container-narrow"> <footer data-astro-cid-bbsqf2va> <div class="container" data-astro-cid-bbsqf2va> <div class="grid" data-astro-cid-bbsqf2va> <div class="left" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>A propos</h4> <p data-astro-cid-bbsqf2va> Ingénieur de formation en réseaux et telecom, j’ai développé une expertise complémentaire en infrastructure logicielle et développement. </p> </div> <div class="extra" data-astro-cid-bbsqf2va> <div class="contacts" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>contact</h4> <ul class="links" data-astro-cid-bbsqf2va> <a href="mailto:contact@eembouz.com" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> contact@eembouz.com </li> </a> </ul> </div> <div class="legacy" data-astro-cid-bbsqf2va> <a href="https://blog.eembouz.com" data-astro-cid-bbsqf2va>blog.eembouz.com</a> <span class="declaration" data-astro-cid-bbsqf2va>Copyright © 2025 elysee Mboussa. All rights reserved.</span> </div> </div> </div> <div class="right" data-astro-cid-bbsqf2va> <div class="contact" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>Réseaux </h4>
+              <ul class="links" data-astro-cid-bbsqf2va> <a href="https://github.com/elyseeMB" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Github </li> </a><a href="https://www.linkedin.com/in/%CE%BEmmanuelito-mboussa-49099932a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Linkedin </li> </a> </ul> </div> </div> </div> </div> </div> </footer>  </div> </div> </div> <script type="module">const a=["en"];function i(n,e){if(e.length!==1)throw new Error("");if(n==null||n.length===0||!e)return n;const l=e.charCodeAt(0);let t=0,o=n.length-1;for(;t<=o&&n.charCodeAt(t)===l;)t++;for(;o>=t&&n.charCodeAt(o)===l;)o--;return n.slice(t,o+1)}function c(){if(localStorage.getItem("lang")===null){for(const e of a)if(navigator.language.includes(e)){if(window.location.href.includes(`/${e}`)){localStorage.setItem("lang",e);continue}localStorage.setItem("lang",e),window.location.href="/"+i(`${e}${window.location.pathname}`,"/")}}}c();export{i as trim};</script></body></html> 

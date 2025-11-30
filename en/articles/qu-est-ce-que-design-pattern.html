@@ -1,0 +1,538 @@
+<!DOCTYPE html><html lang="fr"> <title>What is a Design Pattern? | Blog</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Design patterns are proven and validated solutions established by computing pioneers. They were conceived to structure and organize code in clear, readable, and efficient manners."><link rel="canonical" href="https://blog.eembouz.com/en/articles/qu-est-ce-que-design-pattern.html"><meta name="author" content="elysee"><meta property="article:published_time" content="2025-07-12T00:00:00.000Z"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-512.png" sizes="512x512"><link rel="icon" type="image/svg+xml" href="https://blog.eembouz.com/favicon.svg"><link rel="apple-touch-icon" href="https://blog.eembouz.com/apple-touch-icon.png"><link rel="manifest" href="https://blog.eembouz.com/site.webmanifest"><link rel="sitemap" href="https://blog.eembouz.com/sitemap-index.xml"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-96x96.png" sizes="96x96"><link rel="apple-touch-icon" sizes="180x180" href="https://blog.eembouz.com/apple-touch-icon.png"><meta name="theme-color" content="#1e1e1e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Domine:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Pridi:wght@200;300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oranienbaum&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"><meta property="og:type" content="article"><meta property="og:site_name" content="Elysee-Mboussa"><meta property="og:title" content="What is a Design Pattern? | Blog"><meta property="og:type" content="website"><meta property="og:description" content="Design patterns are proven and validated solutions established by computing pioneers. They were conceived to structure and organize code in clear, readable, and efficient manners."><meta property="og:image" content="/design_pattern.png"><meta property="og:url" content="https://blog.eembouz.com/en/articles/qu-est-ce-que-design-pattern.html"><meta name="robots" content="index, follow"><meta name="google-site-verification" content="hyeUNyeanb3BYVbCmMJKMIiXusraMSWPSCNMBn83Sk8"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What is a Design Pattern? | Blog"><meta name="twitter:description" content="Design patterns are proven and validated solutions established by computing pioneers. They were conceived to structure and organize code in clear, readable, and efficient manners."><meta name="twitter:image" content="/design_pattern.png"><meta name="twitter:site" content="@EmmanuelitoElysee"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Emmanuelito elysee",
+    "url": "https://blog.eembouz.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.eembouz.com",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Emmanuelito Elysee",
+    "url": "https://blog.eembouz.com/",
+    "logo": "https://blog.eembouz.com/favicon-512.png"
+  }
+</script><script type="module" src="/_astro/Scripts.astro_astro_type_script_index_0_lang.BBugtUs8.js"></script><style>span[data-astro-cid-rafwukvt]{font-family:JetBrains Mono!important;letter-spacing:-.5px}
+body .page-wrapper[data-astro-cid-w5xgdjtp]{background:red!important}.container[data-astro-cid-w5xgdjtp],.wrapper-content[data-astro-cid-w5xgdjtp]{overflow:visible}.article__paragraph[data-astro-cid-w5xgdjtp]{padding-block:1rem}.description[data-astro-cid-w5xgdjtp]{padding-block:3rem}.info[data-astro-cid-w5xgdjtp]{display:grid;grid-template-columns:1fr;gap:1rem}.wrapper-content[data-astro-cid-w5xgdjtp]{max-width:700px;display:block}.wrapper-outline[data-astro-cid-w5xgdjtp]{display:none}@media screen and (min-width:1200px){.wrapper-content[data-astro-cid-w5xgdjtp]{width:100%;display:grid!important;grid-template-columns:1fr 550px 1fr!important;padding:0}.wrapper-outline[data-astro-cid-w5xgdjtp]{display:block;grid-column:3;margin-bottom:5rem}.content[data-astro-cid-w5xgdjtp]{width:550px;grid-column:2;padding-bottom:5rem}}.content[data-astro-cid-w5xgdjtp]{padding-bottom:5rem}h1[data-astro-cid-w5xgdjtp]{text-align:left;padding-top:2rem}.cover[data-astro-cid-w5xgdjtp]{width:100%}.meta[data-astro-cid-w5xgdjtp]{display:flex;flex-direction:column;font-size:.9rem;gap:.5rem;padding-bottom:4rem;font-family:JetBrains Mono!important;>[data-astro-cid-w5xgdjtp]{font-family:JetBrains Mono!important;letter-spacing:-.5px}}@media screen and (max-width:750px){.wrapper-content[data-astro-cid-w5xgdjtp]{padding-inline:var(--container-padding)}}@media screen and (max-width:590px){.container-narrow[data-astro-cid-w5xgdjtp] .info[data-astro-cid-w5xgdjtp] .tags[data-astro-cid-w5xgdjtp]{align-items:flex-start;flex-direction:column}}@media screen and (min-width:1300px){.heading[data-astro-cid-w5xgdjtp]{img{max-height:500px}}}
+</style>
+<link rel="stylesheet" href="/_astro/505.C6OAiFHz.css"><style>pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
+  Theme: Tokyo-night-Dark
+  origin: https://github.com/enkia/tokyo-night-vscode-theme
+  Description: Original highlight.js style
+  Author: (c) Henri Vandersleyen <hvandersleyen@gmail.com>
+  License: see project LICENSE
+  Touched: 2022
+*/.hljs-meta,.hljs-comment{color:#565f89}.hljs-tag,.hljs-doctag,.hljs-selector-id,.hljs-selector-class,.hljs-regexp,.hljs-template-tag,.hljs-selector-pseudo,.hljs-selector-attr,.hljs-variable.language_,.hljs-deletion{color:#f7768e}.hljs-variable,.hljs-template-variable,.hljs-number,.hljs-literal,.hljs-type,.hljs-params,.hljs-link{color:#ff9e64}.hljs-built_in,.hljs-attribute{color:#e0af68}.hljs-selector-tag{color:#2ac3de}.hljs-keyword,.hljs-title.function_,.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-subst,.hljs-property{color:#7dcfff}.hljs-selector-tag{color:#73daca}.hljs-quote,.hljs-string,.hljs-symbol,.hljs-bullet,.hljs-addition{color:#9ece6a}.hljs-code,.hljs-formula,.hljs-section{color:#7aa2f7}.hljs-name,.hljs-keyword,.hljs-operator,.hljs-char.escape_,.hljs-attr{color:#bb9af7}.hljs-punctuation{color:#c0caf5}.hljs{background:#1a1b26;color:#9aa5ce}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
+</style><body> <div class="bg-noise"> <div class="page-wrapper"> <div class="container-narrow" data-astro-cid-j2devmb2> <header data-astro-cid-6sev2il6> <div class="container" data-astro-cid-6sev2il6> <div class="wrapper" data-astro-cid-6sev2il6> <div class="flex" data-astro-cid-6sev2il6> <div class="logo" data-astro-cid-6sev2il6> <a href="/" data-astro-cid-6sev2il6> <svg width="40" height="40" id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" data-astro-cid-6sev2il6> <defs data-astro-cid-6sev2il6> <style>
+                  .cls-1,
+                  .cls-2 {
+                    stroke-width: 0px;
+                  }
+
+                  .cls-2 {
+                    fill: #007aec;
+                  }
+                </style> </defs> <circle class="cls-2" cx="6" cy="6" r="5.5" data-astro-cid-6sev2il6></circle> <path class="cls-1" d="m6,1c2.76,0,5,2.24,5,5s-2.24,5-5,5S1,8.76,1,6,3.24,1,6,1m0-1C2.69,0,0,2.69,0,6s2.69,6,6,6,6-2.69,6-6S9.31,0,6,0h0Z" data-astro-cid-6sev2il6></path> </svg></a> </div>  <div class="actions" data-astro-cid-j2devmb2> <a href="https://eembouz.com" data-astro-cid-j2devmb2> Portfolio</a> <a href="/en/articles" data-astro-cid-j2devmb2> all my articles </a> </div>  </div> </div> </div> </header>  </div>   <section data-markdown data-astro-cid-w5xgdjtp> <div class="container" data-astro-cid-w5xgdjtp> <div class="container-narrow" data-astro-cid-w5xgdjtp> <div class="info" data-astro-cid-w5xgdjtp> <h1 data-astro-cid-w5xgdjtp>What is a Design Pattern?</h1> <div class="meta" data-astro-cid-w5xgdjtp> <span data-astro-cid-w5xgdjtp> July 12, 2025 ·
+Elysee </span> <span data-astro-cid-rafwukvt> 9 min read </span>  <div class="tags" data-astro-cid-w5xgdjtp> <div class="tag" data-astro-cid-w5xgdjtp>best-practices / Clean code</div><div class="tag" data-astro-cid-w5xgdjtp>programming</div> </div> </div> </div> </div> </div> <div class="container" data-astro-cid-w5xgdjtp> <div class="container-narrow" data-astro-cid-w5xgdjtp> <div class="heading" data-astro-cid-w5xgdjtp> <div class="cover" data-astro-cid-w5xgdjtp> <!-- <img src={thumbnail} alt="" /> --> </div> </div> </div> </div> <div class="container" data-astro-cid-w5xgdjtp> <div class="wrapper-content" data-astro-cid-w5xgdjtp> <div class="content prose prose-md" data-astro-cid-w5xgdjtp> <div class="blog-single"><p><strong>Design patterns</strong> are proven and validated solutions established by
+computing pioneers. They were conceived to <strong>structure and organize
+code</strong> in clear, readable, and efficient manners. The concept proposes
+<strong>generic and reusable models</strong> that facilitate <strong>scalability</strong> and
+<strong>maintenance</strong> of software systems while reducing common
+errors.</p><h2 id="history">History</h2><p><strong>Design patterns</strong> emerged from the desire to produce
+<strong>scalable</strong> and maintainable code, even if it initially meant <strong>sacrificing
+some development comfort</strong>. When technical teams
+observe that identical structures or solutions are <strong>repeated multiple times in
+code</strong> to resolve similar problem types, they eventually
+assign a <strong>common name</strong>. Thus the concept of <strong>design
+patterns</strong> was born: <strong>named, generic, and reusable</strong> solutions,
+documented to facilitate collaboration and comprehension in
+software projects.</p><blockquote><em><p>Historically, the design pattern concept was inspired by the work of
+<strong>Christopher Alexander</strong> in architecture, subsequently formalized in
+computing by the <strong>“Gang of Four”</strong> in 1994. These patterns became an
+indispensable foundation for structuring code, avoiding redundancies, and
+facilitating large-scale application maintenance.</p></em></blockquote><h2 id="why-should-i-learn-patterns">Why Should I Learn Patterns?</h2><p>In the majority of cases, you have probably already <strong>utilized design
+patterns unknowingly</strong>. This precisely distinguishes
+junior developers from senior developers: the capacity to recognize,
+comprehend, and consciously apply these structures. For example, <strong>framework
+source code</strong> (such as React, Laravel, AdonisJS, etc.) is replete with them.</p><p>Once mastered, <strong>design patterns</strong> become a genuine <strong>toolkit</strong>
+for efficiently resolving common development problems.
+They will help you <strong>think differently</strong>, with more structure and perspective.
+Over time, this manner of reasoning becomes almost natural.</p><h2 id="classifications-and-roles">Classifications and Roles:</h2><p>This list is non-exhaustive and does not cover all design
+patterns you might encounter. We will concentrate on a
+particular model type: <strong>architectural patterns</strong>.</p><p>These models can be implemented in <strong>any programming
+language</strong> and are called <strong>universal patterns</strong> or <strong>high-level
+patterns</strong>. They contrast with <strong>idioms</strong>, which are more
+specific solutions, language-particular and often low-level.</p><blockquote><ul>
+<li>
+<p><strong>Architectural patterns</strong> define the global structure of an
+application or system (e.g., MVC, Client-Server, Microservices).</p>
+</li>
+<li>
+<p><strong>Design patterns</strong> (in the more classical sense) concern
+code organization within components (e.g., Singleton, Factory,
+Observer).</p>
+</li>
+<li>
+<p><strong>Idioms</strong> are language-specific constructions that
+exploit syntactic and semantic specificities.</p>
+</li>
+</ul></blockquote><style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z23exql" component-url="/_astro/DisplayList.CpOMkiNy.js" component-export="default" renderer-url="/_astro/client.BlaPJyZK.js" props="{}" ssr client="only" opts="{&quot;name&quot;:&quot;DisplayList&quot;,&quot;value&quot;:true}"></astro-island><hr/><h2 id="concrete-case-a-zustand-store-refactored-according-to-design-patterns">Concrete Case: A Zustand Store Refactored According to Design Patterns</h2><p>To concretely illustrate design pattern benefits, consider a
+<strong>real example</strong> encountered during application construction.
+I utilize Zustand as a <strong>global state management</strong> solution. It’s a
+simple yet powerful tool enabling on-the-fly store construction.</p><p>However, advancing in development, the store becomes <strong>complex,
+difficult to test or maintain</strong>, and certain logics are duplicated.
+This is exactly the type of situation where <strong>design patterns make complete
+sense</strong>.</p><p>In this section, we will <strong>refactor this store step-by-step</strong>,
+applying different design patterns. Each refactor will be <strong>associated with a
+specific pattern</strong>: Singleton, Factory, Observer, etc. This will enable
+understanding <strong>both the theory</strong> behind each model <strong>and its
+practical application</strong> in a modern context (React + Zustand).</p><h2 id="base-code">Base Code</h2><p>Before beginning refactoring, here is <strong>the Zustand store as it initially
+existed</strong> in my project. It is functional and partially implemented
+certain patterns</p><ul>
+<li>Factory Method (partially)</li>
+<li>Strategy</li>
+</ul><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { UnAuthenticatedError } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;@helpers/website&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  createContext,</span></span>
+<span class="line"><span style="color:#E1E4E8">  useContext,</span></span>
+<span class="line"><span style="color:#E1E4E8">  useMemo,</span></span>
+<span class="line"><span style="color:#F97583">  type</span><span style="color:#E1E4E8"> PropsWithChildren,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;react&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { create, useStore </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> useZustandStore } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;zustand&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { combine, persist } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;zustand/middleware&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { Account } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;./hooks/useAuth.ts&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  AccessLevels,</span></span>
+<span class="line"><span style="color:#E1E4E8">  Courses,</span></span>
+<span class="line"><span style="color:#E1E4E8">  Difficulties,</span></span>
+<span class="line"><span style="color:#E1E4E8">  Statuses,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;@api/website/types&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  accessLevel</span><span style="color:#F97583">:</span><span style="color:#B392F0"> AccessLevels</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  difficulties</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Difficulties</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  statuses</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Statuses</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> State</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  account</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> undefined</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> null</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  organization</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  accesslevels</span><span style="color:#F97583">:</span><span style="color:#B392F0"> AccessLevels</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  difficulties</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Difficulties</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  statuses</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Statuses</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  courses</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Courses</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getStateKey</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">  type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Omit</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">State</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;account&quot;</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> &quot;organization&quot;</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> &quot;courses&quot;</span><span style="color:#E1E4E8">&gt; {</span></span>
+<span class="line"><span style="color:#F97583">  switch</span><span style="color:#E1E4E8"> (type) {</span></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#9ECBFF"> &quot;accessLevel&quot;</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#9ECBFF"> &quot;accesslevels&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#9ECBFF"> &quot;difficulties&quot;</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#9ECBFF"> &quot;difficulties&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#9ECBFF"> &quot;statuses&quot;</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#9ECBFF"> &quot;statuses&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    default</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Courses resource type &quot;</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> type);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> createStore</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#B392F0">  create</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">    persist</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">      combine</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          account: </span><span style="color:#79B8FF">undefined</span><span style="color:#F97583"> as</span><span style="color:#79B8FF"> undefined</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> null</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> Account</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">          organization: {},</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">          courses: [],</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">          accesslevels: [],</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">          difficulties: [],</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">          statuses: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">        } </span><span style="color:#F97583">as</span><span style="color:#B392F0"> State</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">        (</span><span style="color:#FFAB70">set</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#B392F0">          setResources</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">            data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">][]</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) {</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getStateKey</span><span style="color:#E1E4E8">(type);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">({ [key]: data });</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          addResource</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">            newData</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) {</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getStateKey</span><span style="color:#E1E4E8">(type);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              [key]: [</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">state[key], newData],</span></span>
+<span class="line"><span style="color:#E1E4E8">            }));</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          updateResource</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">            newData</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) {</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getStateKey</span><span style="color:#E1E4E8">(type);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              [key]: state[key].</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">                item.id </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> newData.id </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">item, </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">newData } </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> item</span></span>
+<span class="line"><span style="color:#E1E4E8">              ),</span></span>
+<span class="line"><span style="color:#E1E4E8">            }));</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          deleteResource</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">            id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) {</span></span>
+<span class="line"><span style="color:#F97583">            const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getStateKey</span><span style="color:#E1E4E8">(type);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              [key]: state[key].</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> item.id </span><span style="color:#F97583">!==</span><span style="color:#E1E4E8"> id),</span></span>
+<span class="line"><span style="color:#E1E4E8">            }));</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          setCourses</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">courses</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Courses</span><span style="color:#E1E4E8">[]) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">            set</span><span style="color:#E1E4E8">({ courses });</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          addCourse</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">course</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Courses</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">            set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              courses: [</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">state.courses, course],</span></span>
+<span class="line"><span style="color:#E1E4E8">            }));</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          updateOrganization</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">newDate</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt;) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#B392F0">            set</span><span style="color:#E1E4E8">({ organization: newDate }),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          updateAccount</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">account</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Account</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">({ account }),</span></span>
+<span class="line"><span style="color:#E1E4E8">        })</span></span>
+<span class="line"><span style="color:#E1E4E8">      ),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        name: </span><span style="color:#9ECBFF">&quot;account&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Store</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> ReturnType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> createStore&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> StoreState</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Store</span><span style="color:#F97583"> extends</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  getState</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#F97583"> infer</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">  ?</span><span style="color:#B392F0"> T</span></span>
+<span class="line"><span style="color:#F97583">  :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> StoreContext</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createContext</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">store</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Store</span><span style="color:#E1E4E8"> }&gt;({});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> StoreProvider</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">children</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PropsWithChildren</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> store</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMemo</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> createStore</span><span style="color:#E1E4E8">(), []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#F97583">    &lt;</span><span style="color:#E1E4E8">StoreContext.Provider value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{ </span><span style="color:#B392F0">store</span><span style="color:#E1E4E8">: store }}</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#FFAB70">children</span><span style="color:#E1E4E8">}{</span><span style="color:#9ECBFF">&quot; &quot;</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">    &lt;/</span><span style="color:#E1E4E8">StoreContext.Provider</span><span style="color:#F97583">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;(</span><span style="color:#B392F0">selector</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">state</span><span style="color:#F97583">:</span><span style="color:#B392F0"> StoreState</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> store</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useContext</span><span style="color:#E1E4E8">(StoreContext).store;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">store) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;A context need to be provider to use the store&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useZustandStore</span><span style="color:#E1E4E8">(store, selector);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt; </span><span style="color:#F97583">=</span><span style="color:#B392F0"> T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span></span>
+<span class="line"><span style="color:#F97583">  ?</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#F97583">  :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useResource</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ResourceMap</span><span style="color:#E1E4E8">&gt;(</span><span style="color:#FFAB70">type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getStateKey</span><span style="color:#E1E4E8">(type);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> list</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state[key]) </span><span style="color:#F97583">as</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> setResources</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.setResources);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> addResource</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.addResource);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> updateResource</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.updateResource);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> deleteResource</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.deleteResource);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    list,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    set</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;[]) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> setResources</span><span style="color:#E1E4E8">(type, data),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    add</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> addResource</span><span style="color:#E1E4E8">(type, data),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    update</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> updateResource</span><span style="color:#E1E4E8">(type, data),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    delete</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> deleteResource</span><span style="color:#E1E4E8">(type, id),</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ACCESS_LEVELS</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useAccessLevels</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useResource</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;accessLevel&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// DIFFICULTIES</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useDifficulties</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useResource</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;difficulties&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// STATUSES</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useStatuses</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useResource</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;statuses&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// COURSES</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useCourses</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> list</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.courses);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> setCourses</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.setCourses);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> addCourses</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.addCourse);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    list,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    set</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Courses</span><span style="color:#E1E4E8">[]) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> setCourses</span><span style="color:#E1E4E8">(data),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    add</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Courses</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> addCourses</span><span style="color:#E1E4E8">(data),</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ORGANISATION</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useOrganization</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.organization);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useUpdateOrganization</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.updateOrganization);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useUpdateAccount</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.updateAccount);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useIsAuth</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> account</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.account);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">account) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> UnAuthenticatedError</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    ...</span><span style="color:#E1E4E8">account,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useAccount</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> account</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> state.account);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    ...</span><span style="color:#E1E4E8">account,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><h3 id="refactored-version-objectives">Refactored Version Objectives</h3><ul>
+<li>Separate responsibilities.</li>
+<li>Apply classical patterns.</li>
+<li>Maintain clean and extensible API.</li>
+</ul><h2 id="singleton">Singleton:</h2><p>A singleton ensures that only one instance of an object (preferably
+a class) is initialized, thus offering a single global
+initialization point. In our situation, we are in JavaScript where each
+object and module is unique in its execution context.</p><p>— <strong>Singleton Pattern</strong></p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { create } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;zustand&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { combine, persist } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;zustand/middleware&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { State, Store, ResourceKey, InferResourceType } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;./types&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { getStateKey } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;./factory&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> storeInstance</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Store</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> undefined</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> createStore</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Store</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (storeInstance) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> storeInstance;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  storeInstance </span><span style="color:#F97583">=</span><span style="color:#B392F0"> create</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">    persist</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">      combine</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          account: </span><span style="color:#79B8FF">undefined</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          organization: {},</span></span>
+<span class="line"><span style="color:#E1E4E8">          courses: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">          accesslevels: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">          difficulties: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">          statuses: [],</span></span>
+<span class="line"><span style="color:#E1E4E8">        } </span><span style="color:#F97583">as</span><span style="color:#B392F0"> State</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        (</span><span style="color:#FFAB70">set</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#B392F0">          updateAccount</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">account</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">({ account }),</span></span>
+<span class="line"><span style="color:#B392F0">          updateOrganization</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">org</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">({ organization: org }),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          setResources</span><span style="color:#E1E4E8">: &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ResourceKey</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">            data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;[]</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> set</span><span style="color:#E1E4E8">({ [</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)]: data }),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          addResource</span><span style="color:#E1E4E8">: &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ResourceKey</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">            item</span><span style="color:#F97583">:</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#B392F0">            set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              [</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)]: [</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">state[</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)], item],</span></span>
+<span class="line"><span style="color:#E1E4E8">            })),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          updateResource</span><span style="color:#E1E4E8">: &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ResourceKey</span><span style="color:#E1E4E8">&gt;(</span></span>
+<span class="line"><span style="color:#FFAB70">            type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">            item</span><span style="color:#F97583">:</span><span style="color:#B392F0"> InferResourceType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">          ) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#B392F0">            set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              [</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)]: state[</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)].</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">i</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">                i.id </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> item.id </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">i, </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">item } </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">              ),</span></span>
+<span class="line"><span style="color:#E1E4E8">            })),</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">          deleteResource</span><span style="color:#E1E4E8">: &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ResourceKey</span><span style="color:#E1E4E8">&gt;(</span><span style="color:#FFAB70">type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span></span>
+<span class="line"><span style="color:#B392F0">            set</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">              [</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)]: state[</span><span style="color:#B392F0">getStateKey</span><span style="color:#E1E4E8">(type)].</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">                (</span><span style="color:#FFAB70">i</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> i.id </span><span style="color:#F97583">!==</span><span style="color:#E1E4E8"> id</span></span>
+<span class="line"><span style="color:#E1E4E8">              ),</span></span>
+<span class="line"><span style="color:#E1E4E8">            })),</span></span>
+<span class="line"><span style="color:#E1E4E8">        })</span></span>
+<span class="line"><span style="color:#E1E4E8">      ),</span></span>
+<span class="line"><span style="color:#E1E4E8">      { name: </span><span style="color:#9ECBFF">&quot;account&quot;</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> storeInstance;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre><p>This ensures a single Zustand store exists in the application, which is important
+to avoid inconsistencies or unnecessary re-renders in React <code>createStore()</code>
+in the React context.</p><p>I will not revisit Zustand usage in detail here; that will be addressed in a forthcoming article.
+In brief:</p><ul>
+<li><strong>Combine</strong>: is a middleware that enables state and action separation.</li>
+<li><strong>Persist</strong>: is a middleware that enables persistence with localStorage.</li>
+</ul><h2 id="factory">Factory</h2><p>— <strong>Factory Pattern for Keys</strong></p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> getStateKey</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> &lt;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ResourceKey</span><span style="color:#E1E4E8">&gt;(</span><span style="color:#FFAB70">type</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> State</span><span style="color:#F97583"> =&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> map</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">ResourceKey</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> State</span><span style="color:#E1E4E8">&gt; </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    accessLevel: </span><span style="color:#9ECBFF">&quot;accesslevels&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    difficulties: </span><span style="color:#9ECBFF">&quot;difficulties&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    statuses: </span><span style="color:#9ECBFF">&quot;statuses&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> map[type];</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">key) </span><span style="color:#F97583">throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Unknown resource type: ${</span><span style="color:#E1E4E8">type</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> key;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre><p>We <strong>abstract the logic</strong> of mapping <code>&quot;accessLevel&quot;</code> → <code>&quot;accesslevels&quot;</code> into
+a <strong>declarative</strong> object, instead of a <code>switch</code> statement.</p><h2 id="facade">Facade</h2><p>— <strong>Facade Pattern</strong></p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> useAccount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> account</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useStore</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">s</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> s.account);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">account };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre><p>We hide store complexity and expose a simple API.</p><h2 id="illustrations-in-pseudo-code">Illustrations in Pseudo-code</h2><blockquote><p>Although this article aims to provide <strong>concrete implementation</strong> of design
+patterns in a real context (React + Zustand), certain models like
+<strong>Singleton</strong> or <strong>Factory Method</strong> integrate naturally into my store
+architecture. However, other models like <strong>Builder</strong>, <strong>Strategy</strong>, or
+<strong>Decorator</strong> are more <strong>conceptual</strong> in this context. They will therefore be
+illustrated more <strong>generically in pseudo-code</strong> to facilitate comprehension.
+These examples are <strong>not intended for direct copying</strong> into Zustand or React
+projects, but rather to help you <strong>grasp the general concept</strong> behind each
+pattern. You will subsequently see how to <strong>adapt these concepts</strong> in a real
+project if necessary.</p></blockquote><h3 id="builder-constructing-objects-step-by-step">Builder (constructing objects step-by-step)</h3><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> CourseBuilder</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  color</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  setName</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  setColor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">color</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.color </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> color;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  build</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { name: </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.name, color: </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.color };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> course</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> CourseBuilder</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">setName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;React&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">setColor</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;blue&quot;</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">build</span><span style="color:#E1E4E8">();</span></span></code></pre><h3 id="strategy-dynamically-changing-behavior">Strategy (dynamically changing behavior)</h3><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ExportStrategy</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  execute</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#9ECBFF"> &quot;Not implemented&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> JsonExport</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ExportStrategy</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  execute</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(data);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> CsvExport</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> ExportStrategy</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  execute</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> data.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">row</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> row.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;,&quot;</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> exportData</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">strategy</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ExportStrategy</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> strategy.</span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">(data);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><h3 id="decorator-enriching-behavior-without-touching-source-code">Decorator (enriching behavior without touching source code)</h3><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> withLogger</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">fn</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">...</span><span style="color:#FFAB70">args</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> fn</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">args);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> saveCourse</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">course</span><span style="color:#E1E4E8">) {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> loggedSaveCourse</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> withLogger</span><span style="color:#E1E4E8">(saveCourse);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">loggedSaveCourse</span><span style="color:#E1E4E8">({ name: </span><span style="color:#9ECBFF">&quot;JS&quot;</span><span style="color:#E1E4E8">, color: </span><span style="color:#9ECBFF">&quot;yellow&quot;</span><span style="color:#E1E4E8"> });</span></span></code></pre><hr/><h2 id="conclusion">Conclusion</h2><p><strong>Design patterns</strong> are powerful tools, provided they are utilized
+in the <strong>appropriate context</strong> and thoughtfully. They can be considered <strong>upstream</strong>,
+during conception, if comfortable, or <strong>progressively
+introduced</strong> by refactoring the project over time.</p><p>They enable <strong>avoiding repetition</strong>, <strong>facilitating evolution</strong> of code more
+easily, <strong>improving</strong> it, and especially <strong>better testing</strong>.</p><p>In this article, we have seen how <strong>certain models</strong> like
+<strong>Singleton</strong>, <strong>Factory Method</strong>, or <strong>Facade</strong> can be applied
+<strong>directly</strong> in a modern architecture like React + Zustand. Other
+more <strong>conceptual</strong> patterns (Builder, Strategy, Decorator) were illustrated
+in <strong>pseudo-code</strong> form to better grasp their intention.</p><h3 id="in-summary">In Summary:</h3><ul>
+<li>Patterns are not constraints but <strong>mastered freedom</strong>.</li>
+<li>They enable <strong>avoiding classic pitfalls</strong> of development as projects expand.</li>
+<li><strong>Learning to recognize</strong> and utilize these models also means progressing in <strong>software maturity</strong>.</li>
+</ul></div> </div> <div class="wrapper-outline" data-astro-cid-w5xgdjtp> <script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><astro-island uid="1XAmsF" component-url="/_astro/Outline.DpbtxMXy.js" component-export="Outline" renderer-url="/_astro/client.BlaPJyZK.js" props="{&quot;data-outline&quot;:[0,true],&quot;data-astro-cid-w5xgdjtp&quot;:[0,true]}" ssr client="load" opts="{&quot;name&quot;:&quot;Outline&quot;,&quot;value&quot;:true}" await-children><div class="outline__wrapper w-max"><ul class="flex flex-col gap-3 px-[4rem]  w-[350px]"></ul></div><!--astro:end--></astro-island> </div> </div> </div> </section>  <div class="container-narrow"> <footer data-astro-cid-bbsqf2va> <div class="container" data-astro-cid-bbsqf2va> <div class="grid" data-astro-cid-bbsqf2va> <div class="left" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>About</h4> <p data-astro-cid-bbsqf2va> Trained as a network and telecom engineer, I have developed complementary expertise in software infrastructure and development. </p> </div> <div class="extra" data-astro-cid-bbsqf2va> <div class="contacts" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>contact</h4> <ul class="links" data-astro-cid-bbsqf2va> <a href="mailto:contact@eembouz.com" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> contact@eembouz.com </li> </a> </ul> </div> <div class="legacy" data-astro-cid-bbsqf2va> <a href="https://blog.eembouz.com" data-astro-cid-bbsqf2va>blog.eembouz.com</a> <span class="declaration" data-astro-cid-bbsqf2va>Copyright © 2025 elysee Mboussa. All rights reserved.</span> </div> </div> </div> <div class="right" data-astro-cid-bbsqf2va> <div class="contact" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>Networking </h4>
+              <ul class="links" data-astro-cid-bbsqf2va> <a href="https://github.com/elyseeMB" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Github </li> </a><a href="https://www.linkedin.com/in/%CE%BEmmanuelito-mboussa-49099932a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Linkedin </li> </a> </ul> </div> </div> </div> </div> </div> </footer>  </div> </div> </div> <script type="module">const a=["en"];function i(n,e){if(e.length!==1)throw new Error("");if(n==null||n.length===0||!e)return n;const l=e.charCodeAt(0);let t=0,o=n.length-1;for(;t<=o&&n.charCodeAt(t)===l;)t++;for(;o>=t&&n.charCodeAt(o)===l;)o--;return n.slice(t,o+1)}function c(){if(localStorage.getItem("lang")===null){for(const e of a)if(navigator.language.includes(e)){if(window.location.href.includes(`/${e}`)){localStorage.setItem("lang",e);continue}localStorage.setItem("lang",e),window.location.href="/"+i(`${e}${window.location.pathname}`,"/")}}}c();export{i as trim};</script></body></html> 

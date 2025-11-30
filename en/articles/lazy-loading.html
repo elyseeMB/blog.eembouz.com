@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="fr"> <title>Lazy Loading in React: Retry &amp; Reload Mechanisms | Blog</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="In production environments, optimizing the loading process and deployment of new versions in Single Page Applications (SPAs) constitutes a critical consideration for system reliability and user experience."><link rel="canonical" href="https://blog.eembouz.com/en/articles/lazy-loading.html"><meta name="author" content="elysee"><meta property="article:published_time" content="2025-09-14T00:00:00.000Z"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-512.png" sizes="512x512"><link rel="icon" type="image/svg+xml" href="https://blog.eembouz.com/favicon.svg"><link rel="apple-touch-icon" href="https://blog.eembouz.com/apple-touch-icon.png"><link rel="manifest" href="https://blog.eembouz.com/site.webmanifest"><link rel="sitemap" href="https://blog.eembouz.com/sitemap-index.xml"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-96x96.png" sizes="96x96"><link rel="apple-touch-icon" sizes="180x180" href="https://blog.eembouz.com/apple-touch-icon.png"><meta name="theme-color" content="#1e1e1e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Domine:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Pridi:wght@200;300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oranienbaum&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"><meta property="og:type" content="article"><meta property="og:site_name" content="Elysee-Mboussa"><meta property="og:title" content="Lazy Loading in React: Retry &#38; Reload Mechanisms | Blog"><meta property="og:type" content="website"><meta property="og:description" content="In production environments, optimizing the loading process and deployment of new versions in Single Page Applications (SPAs) constitutes a critical consideration for system reliability and user experience."><meta property="og:image" content="/lazy_loading/lazy_loading.png"><meta property="og:url" content="https://blog.eembouz.com/en/articles/lazy-loading.html"><meta name="robots" content="index, follow"><meta name="google-site-verification" content="hyeUNyeanb3BYVbCmMJKMIiXusraMSWPSCNMBn83Sk8"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Lazy Loading in React: Retry &#38; Reload Mechanisms | Blog"><meta name="twitter:description" content="In production environments, optimizing the loading process and deployment of new versions in Single Page Applications (SPAs) constitutes a critical consideration for system reliability and user experience."><meta name="twitter:image" content="/lazy_loading/lazy_loading.png"><meta name="twitter:site" content="@EmmanuelitoElysee"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Emmanuelito elysee",
+    "url": "https://blog.eembouz.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.eembouz.com",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Emmanuelito Elysee",
+    "url": "https://blog.eembouz.com/",
+    "logo": "https://blog.eembouz.com/favicon-512.png"
+  }
+</script><script type="module" src="/_astro/Scripts.astro_astro_type_script_index_0_lang.BBugtUs8.js"></script><style>span[data-astro-cid-rafwukvt]{font-family:JetBrains Mono!important;letter-spacing:-.5px}
+body .page-wrapper[data-astro-cid-w5xgdjtp]{background:red!important}.container[data-astro-cid-w5xgdjtp],.wrapper-content[data-astro-cid-w5xgdjtp]{overflow:visible}.article__paragraph[data-astro-cid-w5xgdjtp]{padding-block:1rem}.description[data-astro-cid-w5xgdjtp]{padding-block:3rem}.info[data-astro-cid-w5xgdjtp]{display:grid;grid-template-columns:1fr;gap:1rem}.wrapper-content[data-astro-cid-w5xgdjtp]{max-width:700px;display:block}.wrapper-outline[data-astro-cid-w5xgdjtp]{display:none}@media screen and (min-width:1200px){.wrapper-content[data-astro-cid-w5xgdjtp]{width:100%;display:grid!important;grid-template-columns:1fr 550px 1fr!important;padding:0}.wrapper-outline[data-astro-cid-w5xgdjtp]{display:block;grid-column:3;margin-bottom:5rem}.content[data-astro-cid-w5xgdjtp]{width:550px;grid-column:2;padding-bottom:5rem}}.content[data-astro-cid-w5xgdjtp]{padding-bottom:5rem}h1[data-astro-cid-w5xgdjtp]{text-align:left;padding-top:2rem}.cover[data-astro-cid-w5xgdjtp]{width:100%}.meta[data-astro-cid-w5xgdjtp]{display:flex;flex-direction:column;font-size:.9rem;gap:.5rem;padding-bottom:4rem;font-family:JetBrains Mono!important;>[data-astro-cid-w5xgdjtp]{font-family:JetBrains Mono!important;letter-spacing:-.5px}}@media screen and (max-width:750px){.wrapper-content[data-astro-cid-w5xgdjtp]{padding-inline:var(--container-padding)}}@media screen and (max-width:590px){.container-narrow[data-astro-cid-w5xgdjtp] .info[data-astro-cid-w5xgdjtp] .tags[data-astro-cid-w5xgdjtp]{align-items:flex-start;flex-direction:column}}@media screen and (min-width:1300px){.heading[data-astro-cid-w5xgdjtp]{img{max-height:500px}}}
+</style>
+<link rel="stylesheet" href="/_astro/505.C6OAiFHz.css"><body> <div class="bg-noise"> <div class="page-wrapper"> <div class="container-narrow" data-astro-cid-j2devmb2> <header data-astro-cid-6sev2il6> <div class="container" data-astro-cid-6sev2il6> <div class="wrapper" data-astro-cid-6sev2il6> <div class="flex" data-astro-cid-6sev2il6> <div class="logo" data-astro-cid-6sev2il6> <a href="/" data-astro-cid-6sev2il6> <svg width="40" height="40" id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" data-astro-cid-6sev2il6> <defs data-astro-cid-6sev2il6> <style>
+                  .cls-1,
+                  .cls-2 {
+                    stroke-width: 0px;
+                  }
+
+                  .cls-2 {
+                    fill: #007aec;
+                  }
+                </style> </defs> <circle class="cls-2" cx="6" cy="6" r="5.5" data-astro-cid-6sev2il6></circle> <path class="cls-1" d="m6,1c2.76,0,5,2.24,5,5s-2.24,5-5,5S1,8.76,1,6,3.24,1,6,1m0-1C2.69,0,0,2.69,0,6s2.69,6,6,6,6-2.69,6-6S9.31,0,6,0h0Z" data-astro-cid-6sev2il6></path> </svg></a> </div>  <div class="actions" data-astro-cid-j2devmb2> <a href="https://eembouz.com" data-astro-cid-j2devmb2> Portfolio</a> <a href="/en/articles" data-astro-cid-j2devmb2> all my articles </a> </div>  </div> </div> </div> </header>  </div>   <section data-markdown data-astro-cid-w5xgdjtp> <div class="container" data-astro-cid-w5xgdjtp> <div class="container-narrow" data-astro-cid-w5xgdjtp> <div class="info" data-astro-cid-w5xgdjtp> <h1 data-astro-cid-w5xgdjtp>Lazy Loading in React: Retry &amp; Reload Mechanisms</h1> <div class="meta" data-astro-cid-w5xgdjtp> <span data-astro-cid-w5xgdjtp> September 14, 2025 ·
+Elysee </span> <span data-astro-cid-rafwukvt> 8 min read </span>  <div class="tags" data-astro-cid-w5xgdjtp> <div class="tag" data-astro-cid-w5xgdjtp>programming</div> </div> </div> </div> </div> </div> <div class="container" data-astro-cid-w5xgdjtp> <div class="container-narrow" data-astro-cid-w5xgdjtp> <div class="heading" data-astro-cid-w5xgdjtp> <div class="cover" data-astro-cid-w5xgdjtp> <!-- <img src={thumbnail} alt="" /> --> </div> </div> </div> </div> <div class="container" data-astro-cid-w5xgdjtp> <div class="wrapper-content" data-astro-cid-w5xgdjtp> <div class="content prose prose-md" data-astro-cid-w5xgdjtp> <p>In production environments, optimizing the loading process and deployment of new versions in Single Page Applications (SPAs) constitutes a critical consideration for system reliability and user experience. It is frequently observed that users maintaining active sessions for extended periods retain obsolete application versions at the moment of deployment. JavaScript files remain cached in the browser or active during the session, generating loading errors when users attempt to access new functionalities.</p>
+<p>In this article, we will analyze the implementation of lazy loading within navigation and routing contexts. We will examine how this approach enhances performance while effectively managing loading errors in production environments.</p>
+<h2 id="definition">Definition</h2>
+<p>Lazy loading represents an optimization technique utilized in programming, particularly in web development, aimed at improving performance and reducing initial loading times. This approach consists of deferring the loading of resources (images, JavaScript modules, components, etc.) until they are genuinely necessary or requested by the user.</p>
+<h2 id="lazy-loading-in-react">Lazy Loading in React</h2>
+<h3 id="the-standard-approach">The Standard Approach</h3>
+<p>Most modern frameworks (React, Preact, etc.) provide native lazy loading implementations. React exposes this functionality via <code>React.lazy()</code>, however, this basic approach reveals its limitations in production environments, particularly during JavaScript chunk loading failures.</p>
+<h3 id="operational-mechanism">Operational Mechanism</h3>
+<p>Lazy loading functions by awaiting a promise resolution to a module containing a default export. When the component is requested, React extracts the <code>module.default</code> and utilizes it for rendering operations.</p>
+<h3 id="basic-code-example">Basic Code Example</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { lazy } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;react&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> MarkdownPreview</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> lazy</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=&gt;</span><span style="color:#F97583"> import</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;./MarkdownPreview.js&quot;</span><span style="color:#E1E4E8">));</span></span></code></pre>
+<h2 id="production-chunk-management-challenges">Production Chunk Management Challenges</h2>
+<p>As mentioned in the introduction, frequent production deployments generate a recurring problem: users with active sessions retain references to legacy chunks that no longer exist on the server. When these users attempt to navigate to new application sections, loading fails because JavaScript files have been renamed with new hashes during deployment.</p>
+<h3 id="chunk-definition">Chunk Definition:</h3>
+<p>A chunk constitutes a segment of JavaScript code generated and optimized for production by a bundler (Vite, Webpack) during the build process.</p>
+<h2 id="enhanced-methodological-approach">Enhanced Methodological Approach</h2>
+<h3 id="reload-functionality">Reload Functionality</h3>
+<p>We begin with the essential component: chunk management to minimize loading failures attributable to obsolete hashes from previous versions.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { lazy </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> reactLazy, </span><span style="color:#F97583">type</span><span style="color:#E1E4E8"> ComponentType, </span><span style="color:#F97583">type</span><span style="color:#E1E4E8"> FC } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;react&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> createLazy</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">  importFunction</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">default</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComponentType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt; }&gt;,</span></span>
+<span class="line"><span style="color:#FFAB70">  maxRetries</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * 1 - Automatic reload management</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> reactLazy</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    /**</span></span>
+<span class="line"><span style="color:#6A737D">     * Utilizing the function signature as a sessionStorage key.</span></span>
+<span class="line"><span style="color:#6A737D">     * Converting it to a string to create a unique identifier.</span></span>
+<span class="line"><span style="color:#6A737D">     */</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> functionString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> importFunction.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * Executing the function that imports our component</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> component</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> importFunction</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * Upon success, removing the sessionStorage key beforehand</span></span>
+<span class="line"><span style="color:#6A737D">       * for clean reinitialization during the next potential failure</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#E1E4E8">      sessionStorage.</span><span style="color:#B392F0">removeItem</span><span style="color:#E1E4E8">(functionString);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> component;</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * Retrieving the value stored in sessionStorage with the &quot;functionString&quot; key.</span></span>
+<span class="line"><span style="color:#6A737D">       * Subsequently comparing it to our maxRetries parameter.</span></span>
+<span class="line"><span style="color:#6A737D">       * If it is less than maxRetries, we increment it until it becomes greater.</span></span>
+<span class="line"><span style="color:#6A737D">       * Then we refresh the page with window.location.reload().</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> currentFailures</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        sessionStorage.</span><span style="color:#B392F0">getItem</span><span style="color:#E1E4E8">(functionString) </span><span style="color:#F97583">||</span><span style="color:#9ECBFF"> &quot;0&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (currentFailures </span><span style="color:#F97583">&lt;</span><span style="color:#E1E4E8"> maxRetries) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        sessionStorage.</span><span style="color:#B392F0">setItem</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">          functionString,</span></span>
+<span class="line"><span style="color:#E1E4E8">          (currentFailures </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        );</span></span>
+<span class="line"><span style="color:#E1E4E8">        window.location.</span><span style="color:#B392F0">reload</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        /**</span></span>
+<span class="line"><span style="color:#6A737D">         * React.lazy() expects a Promise that resolves to { default: Component }.</span></span>
+<span class="line"><span style="color:#6A737D">         * This is a placeholder that will never be displayed because the page reloads.</span></span>
+<span class="line"><span style="color:#6A737D">         * We return a signature similar to the React.lazy() API.</span></span>
+<span class="line"><span style="color:#6A737D">         */</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#B392F0"> EmptyComponent</span><span style="color:#F97583">:</span><span style="color:#B392F0"> FC</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> { default: EmptyComponent };</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * If the maximum number of attempts has been exceeded, we propagate the error</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>This approach enables automatic error handling for chunk-related failures and significantly improves user experience by preventing application crashes.</p>
+<h3 id="retry-logic-optimization">Retry Logic: Optimization</h3>
+<p>Subsequently, to ensure optimal user experience, we incorporate a retry parameter that defines the number of attempts before triggering reload functionality. Thus, we ensure that temporary errors (unstable connection, momentarily unavailable server) are resolved without resorting to page reloading, which remains our last-resort solution for genuinely obsolete chunks.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> tryImport</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">default</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComponentType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt; }&gt; </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * Initializing the counter</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#F97583">  let</span><span style="color:#E1E4E8"> retryCount</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * Internal function to manage import retry operations.</span></span>
+<span class="line"><span style="color:#6A737D">   * We encapsulate attempt so that retryCount is local to each call</span></span>
+<span class="line"><span style="color:#6A737D">   * and to avoid sharing state between multiple imports.</span></span>
+<span class="line"><span style="color:#6A737D">   * Thus, we have a local function that manages its own state and manipulations.</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> attempt</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">default</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComponentType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt; }&gt; </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> importFunction</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * If the number of retries is less than the parameter argument (which was 3),</span></span>
+<span class="line"><span style="color:#6A737D">       * we increment and re-execute the function (recursion)</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (retryCount </span><span style="color:#F97583">&lt;</span><span style="color:#E1E4E8"> importRetries) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        retryCount</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">        /**</span></span>
+<span class="line"><span style="color:#6A737D">         * We implement a pause for each retry</span></span>
+<span class="line"><span style="color:#6A737D">         */</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (retryDelay </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">          await</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> setTimeout</span><span style="color:#E1E4E8">(resolve, retryDelay));</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#B392F0"> attempt</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * In case of repeated failure, we stop and return the error</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> attempt</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>Encapsulating <code>attempt</code> maintains the retry counter local to each loading attempt, preventing conflicts or unexpected reinitializations in a React environment where lazy loading may be evaluated multiple times.</p>
+<h3 id="complete-implementation">Complete Implementation:</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { lazy </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> reactLazy, </span><span style="color:#F97583">type</span><span style="color:#E1E4E8"> ComponentType, </span><span style="color:#F97583">type</span><span style="color:#E1E4E8"> FC } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> &quot;react&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  maxRetries</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  importRetries</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  retryDelay</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> createLazy</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">  importFunction</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">default</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComponentType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt; }&gt;,</span></span>
+<span class="line"><span style="color:#E1E4E8">  { </span><span style="color:#FFAB70">maxRetries</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">importRetries</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">retryDelay</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    maxRetries: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    importRetries: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    retryDelay: </span><span style="color:#79B8FF">300</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * Retry feature</span></span>
+<span class="line"><span style="color:#6A737D">   *</span></span>
+<span class="line"><span style="color:#6A737D">   * Creating a function with a signature similar to what createLazy() should return</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> tryImport</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">default</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComponentType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt; }&gt; </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    /**</span></span>
+<span class="line"><span style="color:#6A737D">     * Initializing the counter</span></span>
+<span class="line"><span style="color:#6A737D">     */</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> retryCount</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    /**</span></span>
+<span class="line"><span style="color:#6A737D">     * Internal function to manage import retry operations.</span></span>
+<span class="line"><span style="color:#6A737D">     * We encapsulate attempt so that retryCount is local to each call</span></span>
+<span class="line"><span style="color:#6A737D">     * and to avoid sharing state between multiple imports.</span></span>
+<span class="line"><span style="color:#6A737D">     * Thus, we have a local function that manages its own state and manipulations.</span></span>
+<span class="line"><span style="color:#6A737D">     */</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> attempt</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;{ </span><span style="color:#FFAB70">default</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComponentType</span><span style="color:#E1E4E8">&lt;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">&gt; }&gt; </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> importFunction</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#6A737D">        /**</span></span>
+<span class="line"><span style="color:#6A737D">         * If the number of retries is less than the parameter argument (which was 3),</span></span>
+<span class="line"><span style="color:#6A737D">         * we increment and re-execute the function (recursion)</span></span>
+<span class="line"><span style="color:#6A737D">         */</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (retryCount </span><span style="color:#F97583">&lt;</span><span style="color:#E1E4E8"> importRetries) {</span></span>
+<span class="line"><span style="color:#E1E4E8">          retryCount</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">          /**</span></span>
+<span class="line"><span style="color:#6A737D">           * We implement a pause for each retry</span></span>
+<span class="line"><span style="color:#6A737D">           */</span></span>
+<span class="line"><span style="color:#F97583">          if</span><span style="color:#E1E4E8"> (retryDelay </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">            await</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=&gt;</span><span style="color:#B392F0"> setTimeout</span><span style="color:#E1E4E8">(resolve, retryDelay));</span></span>
+<span class="line"><span style="color:#E1E4E8">          }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#B392F0"> attempt</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#6A737D">        /**</span></span>
+<span class="line"><span style="color:#6A737D">         * In case of repeated failure, we stop and return the error</span></span>
+<span class="line"><span style="color:#6A737D">         */</span></span>
+<span class="line"><span style="color:#F97583">        throw</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> attempt</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * Automatic reload management</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> reactLazy</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    /**</span></span>
+<span class="line"><span style="color:#6A737D">     * Utilizing the function signature as a sessionStorage key.</span></span>
+<span class="line"><span style="color:#6A737D">     * Converting it to a string to create a unique identifier.</span></span>
+<span class="line"><span style="color:#6A737D">     */</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> functionString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> importFunction.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * Here we execute the tryImport function which imports our component</span></span>
+<span class="line"><span style="color:#6A737D">       * and performs preliminary processing before executing a reload</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> component</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> tryImport</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * Upon success, removing the sessionStorage key beforehand</span></span>
+<span class="line"><span style="color:#6A737D">       * for clean reinitialization during the next potential failure</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#E1E4E8">      sessionStorage.</span><span style="color:#B392F0">removeItem</span><span style="color:#E1E4E8">(functionString);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> component;</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * Retrieving the value stored in sessionStorage with the &quot;functionString&quot; key.</span></span>
+<span class="line"><span style="color:#6A737D">       * Subsequently comparing it to our maxRetries parameter.</span></span>
+<span class="line"><span style="color:#6A737D">       * If it is less than maxRetries, we increment it until it becomes greater.</span></span>
+<span class="line"><span style="color:#6A737D">       * Then we refresh the page with window.location.reload().</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> currentFailures</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        sessionStorage.</span><span style="color:#B392F0">getItem</span><span style="color:#E1E4E8">(functionString) </span><span style="color:#F97583">||</span><span style="color:#9ECBFF"> &quot;0&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">      );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (currentFailures </span><span style="color:#F97583">&lt;</span><span style="color:#E1E4E8"> maxRetries) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        sessionStorage.</span><span style="color:#B392F0">setItem</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">          functionString,</span></span>
+<span class="line"><span style="color:#E1E4E8">          (currentFailures </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">        window.location.</span><span style="color:#B392F0">reload</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">        /**</span></span>
+<span class="line"><span style="color:#6A737D">         * React.lazy() expects a Promise that resolves to { default: Component }.</span></span>
+<span class="line"><span style="color:#6A737D">         * This is a placeholder that will never be displayed because the page reloads.</span></span>
+<span class="line"><span style="color:#6A737D">         * We return a signature similar to the React.lazy() API.</span></span>
+<span class="line"><span style="color:#6A737D">         */</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#B392F0"> EmptyComponent</span><span style="color:#F97583">:</span><span style="color:#B392F0"> FC</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=&gt;</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> { default: EmptyComponent };</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#6A737D">      /**</span></span>
+<span class="line"><span style="color:#6A737D">       * If the maximum number of attempts has been exceeded, we propagate the error</span></span>
+<span class="line"><span style="color:#6A737D">       */</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="solutions-provided-by-this-approach">Solutions Provided by This Approach</h2>
+<p>This <code>createLazy</code> implementation provides several significant improvements over standard lazy loading:</p>
+<ol>
+<li>
+<p><strong>Robust Error Handling and Retry Mechanisms</strong><br/>
+The component is imported with a configurable retry system (<code>importRetries</code>) and a delay between attempts (<code>retryDelay</code>). This enables better management of network issues or temporary failures during component loading, thereby reducing application crash risks.</p>
+</li>
+<li>
+<p><strong>Efficient Chunk Management</strong><br/>
+By controlling lazy loading at the import level and utilizing unique keys for each imported function, this approach facilitates JavaScript chunk management for production environments. This optimizes resource delivery and simplifies <strong>continuous deployment</strong>, as problematic components can be automatically reloaded without interrupting user experience.</p>
+</li>
+<li>
+<p><strong>User Experience Enhancement Potential</strong><br/>
+While this version focuses on robustness and reliability, the mechanism can be extended to include loading state tracking. For example: displaying a <strong>skeleton loader</strong> or progress indicator while the component is loading. This would directly improve user experience while maintaining the benefits of retry and automatic reload functionality.</p>
+</li>
+</ol>
+<h2 id="simulation">Simulation</h2>
+<p>To demonstrate the functionality of this code, certain lazy-loaded components were deliberately configured to fail. Each component attempts to reload multiple times with delays between attempts, and if it continues to fail, the page can automatically reload. The objective is not to achieve a fluid interface, but to concretely demonstrate how the retry and reload mechanism operates.</p>
+<iframe src="https://elyseemb.github.io/lazyLoading/" style="width:100%; height:500px; border:0; border-radius:8px;"></iframe>
+<p>GitHub Repository: <a href="https://github.com/elyseeMB/lazyLoading.git">https://github.com/elyseeMB/lazyLoading.git</a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In summary, this approach enables more reliable and resilient lazy loading with tangible benefits for production and maintenance. It effectively resolves the critical problem of obsolete chunks that daily affects SPA users.</p>
+<p>This implementation constitutes a solid foundation adaptable to your specific needs: monitoring, user feedback, environment-specific configuration. The principal advantage resides in its adoption simplicity—a few lines suffice to transform fragile lazy loading into a robust system.</p> </div> <div class="wrapper-outline" data-astro-cid-w5xgdjtp> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="1XAmsF" component-url="/_astro/Outline.DpbtxMXy.js" component-export="Outline" renderer-url="/_astro/client.BlaPJyZK.js" props="{&quot;data-outline&quot;:[0,true],&quot;data-astro-cid-w5xgdjtp&quot;:[0,true]}" ssr client="load" opts="{&quot;name&quot;:&quot;Outline&quot;,&quot;value&quot;:true}" await-children><div class="outline__wrapper w-max"><ul class="flex flex-col gap-3 px-[4rem]  w-[350px]"></ul></div><!--astro:end--></astro-island> </div> </div> </div> </section>  <div class="container-narrow"> <footer data-astro-cid-bbsqf2va> <div class="container" data-astro-cid-bbsqf2va> <div class="grid" data-astro-cid-bbsqf2va> <div class="left" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>About</h4> <p data-astro-cid-bbsqf2va> Trained as a network and telecom engineer, I have developed complementary expertise in software infrastructure and development. </p> </div> <div class="extra" data-astro-cid-bbsqf2va> <div class="contacts" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>contact</h4> <ul class="links" data-astro-cid-bbsqf2va> <a href="mailto:contact@eembouz.com" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> contact@eembouz.com </li> </a> </ul> </div> <div class="legacy" data-astro-cid-bbsqf2va> <a href="https://blog.eembouz.com" data-astro-cid-bbsqf2va>blog.eembouz.com</a> <span class="declaration" data-astro-cid-bbsqf2va>Copyright © 2025 elysee Mboussa. All rights reserved.</span> </div> </div> </div> <div class="right" data-astro-cid-bbsqf2va> <div class="contact" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>Networking </h4>
+              <ul class="links" data-astro-cid-bbsqf2va> <a href="https://github.com/elyseeMB" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Github </li> </a><a href="https://www.linkedin.com/in/%CE%BEmmanuelito-mboussa-49099932a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Linkedin </li> </a> </ul> </div> </div> </div> </div> </div> </footer>  </div> </div> </div> <script type="module">const a=["en"];function i(n,e){if(e.length!==1)throw new Error("");if(n==null||n.length===0||!e)return n;const l=e.charCodeAt(0);let t=0,o=n.length-1;for(;t<=o&&n.charCodeAt(t)===l;)t++;for(;o>=t&&n.charCodeAt(o)===l;)o--;return n.slice(t,o+1)}function c(){if(localStorage.getItem("lang")===null){for(const e of a)if(navigator.language.includes(e)){if(window.location.href.includes(`/${e}`)){localStorage.setItem("lang",e);continue}localStorage.setItem("lang",e),window.location.href="/"+i(`${e}${window.location.pathname}`,"/")}}}c();export{i as trim};</script></body></html> 

@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="fr"> <title>Global Identifier | Blog</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="La génération d'identifiants dans une application est un besoin métier très courant. Que ce soit pour créer des bons de commande, des utilisateurs ou toute autre entité métier, chaque objet a besoin d’un identifiant unique et traçable."><link rel="canonical" href="https://blog.eembouz.com/articles/global-id.html"><meta name="author" content="elysee"><meta property="article:published_time" content="2025-09-04T00:00:00.000Z"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-512.png" sizes="512x512"><link rel="icon" type="image/svg+xml" href="https://blog.eembouz.com/favicon.svg"><link rel="apple-touch-icon" href="https://blog.eembouz.com/apple-touch-icon.png"><link rel="manifest" href="https://blog.eembouz.com/site.webmanifest"><link rel="sitemap" href="https://blog.eembouz.com/sitemap-index.xml"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-96x96.png" sizes="96x96"><link rel="apple-touch-icon" sizes="180x180" href="https://blog.eembouz.com/apple-touch-icon.png"><meta name="theme-color" content="#1e1e1e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Domine:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Pridi:wght@200;300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oranienbaum&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"><meta property="og:type" content="article"><meta property="og:site_name" content="Elysee-Mboussa"><meta property="og:title" content="Global Identifier | Blog"><meta property="og:type" content="website"><meta property="og:description" content="La génération d'identifiants dans une application est un besoin métier très courant. Que ce soit pour créer des bons de commande, des utilisateurs ou toute autre entité métier, chaque objet a besoin d’un identifiant unique et traçable."><meta property="og:image" content="/global_id/GlobalID.png"><meta property="og:url" content="https://blog.eembouz.com/articles/global-id.html"><meta name="robots" content="index, follow"><meta name="google-site-verification" content="hyeUNyeanb3BYVbCmMJKMIiXusraMSWPSCNMBn83Sk8"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Global Identifier | Blog"><meta name="twitter:description" content="La génération d'identifiants dans une application est un besoin métier très courant. Que ce soit pour créer des bons de commande, des utilisateurs ou toute autre entité métier, chaque objet a besoin d’un identifiant unique et traçable."><meta name="twitter:image" content="/global_id/GlobalID.png"><meta name="twitter:site" content="@EmmanuelitoElysee"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Emmanuelito elysee",
+    "url": "https://blog.eembouz.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.eembouz.com",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Emmanuelito Elysee",
+    "url": "https://blog.eembouz.com/",
+    "logo": "https://blog.eembouz.com/favicon-512.png"
+  }
+</script><script type="module" src="/_astro/Scripts.astro_astro_type_script_index_0_lang.BBugtUs8.js"></script><style>span[data-astro-cid-rafwukvt]{font-family:JetBrains Mono!important;letter-spacing:-.5px}
+body .page-wrapper[data-astro-cid-eomsrdgo]{background:red!important}.container[data-astro-cid-eomsrdgo],.wrapper-content[data-astro-cid-eomsrdgo]{overflow:visible}.article__paragraph[data-astro-cid-eomsrdgo]{padding-block:1rem}.description[data-astro-cid-eomsrdgo]{padding-block:3rem}.info[data-astro-cid-eomsrdgo]{display:grid;grid-template-columns:1fr;gap:1rem}.wrapper-content[data-astro-cid-eomsrdgo]{max-width:700px;display:block}.wrapper-outline[data-astro-cid-eomsrdgo]{display:none}@media screen and (min-width:1200px){.wrapper-content[data-astro-cid-eomsrdgo]{width:100%;display:grid!important;grid-template-columns:1fr 550px 1fr!important;padding:0}.wrapper-outline[data-astro-cid-eomsrdgo]{display:block;grid-column:3;margin-bottom:5rem}.content[data-astro-cid-eomsrdgo]{width:550px;grid-column:2;padding-bottom:5rem}}.content[data-astro-cid-eomsrdgo]{padding-bottom:5rem}h1[data-astro-cid-eomsrdgo]{text-align:left;padding-top:2rem}.cover[data-astro-cid-eomsrdgo]{width:100%}.meta[data-astro-cid-eomsrdgo]{display:flex;flex-direction:column;font-size:.9rem;gap:.5rem;padding-bottom:4rem;font-family:JetBrains Mono!important;>[data-astro-cid-eomsrdgo]{font-family:JetBrains Mono!important;letter-spacing:-.5px}}@media screen and (max-width:750px){.wrapper-content[data-astro-cid-eomsrdgo]{padding-inline:var(--container-padding)}}@media screen and (max-width:590px){.container-narrow[data-astro-cid-eomsrdgo] .info[data-astro-cid-eomsrdgo] .tags[data-astro-cid-eomsrdgo]{align-items:flex-start;flex-direction:column}}@media screen and (min-width:1300px){.heading[data-astro-cid-eomsrdgo]{img{max-height:500px}}}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media(prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style>
+<link rel="stylesheet" href="/_astro/505.C6OAiFHz.css"><style>[data-astro-transition-scope="astro-jd5qhzdj-1"] { view-transition-name: article-title-global-id; }@layer astro { ::view-transition-old(article-title-global-id) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(article-title-global-id) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(article-title-global-id) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(article-title-global-id) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-jd5qhzdj-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-jd5qhzdj-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><body> <div class="bg-noise"> <div class="page-wrapper"> <div class="container-narrow" data-astro-cid-j2devmb2> <header data-astro-cid-6sev2il6> <div class="container" data-astro-cid-6sev2il6> <div class="wrapper" data-astro-cid-6sev2il6> <div class="flex" data-astro-cid-6sev2il6> <div class="logo" data-astro-cid-6sev2il6> <a href="/" data-astro-cid-6sev2il6> <svg width="40" height="40" id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" data-astro-cid-6sev2il6> <defs data-astro-cid-6sev2il6> <style>
+                  .cls-1,
+                  .cls-2 {
+                    stroke-width: 0px;
+                  }
+
+                  .cls-2 {
+                    fill: #007aec;
+                  }
+                </style> </defs> <circle class="cls-2" cx="6" cy="6" r="5.5" data-astro-cid-6sev2il6></circle> <path class="cls-1" d="m6,1c2.76,0,5,2.24,5,5s-2.24,5-5,5S1,8.76,1,6,3.24,1,6,1m0-1C2.69,0,0,2.69,0,6s2.69,6,6,6,6-2.69,6-6S9.31,0,6,0h0Z" data-astro-cid-6sev2il6></path> </svg></a> </div>  <div class="actions" data-astro-cid-j2devmb2> <a href="https://eembouz.com" data-astro-cid-j2devmb2> Portfolio</a> <a href="/articles" data-astro-cid-j2devmb2> tous mes articles </a> </div>  </div> </div> </div> </header>  </div>   <section data-markdown data-astro-cid-eomsrdgo> <div class="container" data-astro-cid-eomsrdgo> <div class="container-narrow" data-astro-cid-eomsrdgo> <div class="info" data-astro-cid-eomsrdgo> <h1 data-astro-cid-eomsrdgo data-astro-transition-scope="astro-jd5qhzdj-1">Global Identifier</h1> <div class="meta" data-astro-cid-eomsrdgo> <span data-astro-cid-eomsrdgo> 4 septembre 2025 ·
+Elysee </span> <span data-astro-cid-rafwukvt> 6 min de lecture </span>  <div class="tags" data-astro-cid-eomsrdgo> <div class="tag" data-astro-cid-eomsrdgo>Design architecture</div> </div> </div> </div> </div> </div> <div class="container" data-astro-cid-eomsrdgo> <div class="container-narrow" data-astro-cid-eomsrdgo> <div class="heading" data-astro-cid-eomsrdgo> <div class="cover" data-astro-cid-eomsrdgo> <!-- <img src={thumbnail} alt="" /> --> </div> </div> </div> </div> <div class="container" data-astro-cid-eomsrdgo> <div class="wrapper-content" data-astro-cid-eomsrdgo> <div class="content prose prose-md" data-astro-cid-eomsrdgo> <p>La génération d’identifiants dans une application est un besoin métier très courant. Que ce soit pour créer des bons de commande, des utilisateurs ou toute autre entité métier, chaque objet a besoin d’un identifiant <strong>unique et traçable</strong>. Ce besoin devient crucial lorsque l’application commence à <strong>scaler horizontalement</strong> (multiplication des instances, microservices, etc.).</p>
+<p>Dans une application classique, on utilise souvent des identifiants auto-incrémentés ou des UUID. Cependant, ces méthodes présentent des limites :</p>
+<ul>
+<li>Les identifiants incrémentaux sont <strong>hautement prévisibles</strong> (ce qui peut permettre, par exemple, d’estimer le nombre total de commandes ou d’accéder à des ressources non autorisées).</li>
+<li>Les UUID, bien qu’un peu plus sûrs, peuvent être trop longs, peu optimisés pour certaines bases de données, ou encore manquer de <strong>structure métier</strong>.</li>
+</ul>
+<p>Une approche plus structurée et sécurisée devient donc nécessaire pour générer des identifiants <strong>robustes, non prévisibles et compatibles avec une architecture distribuée</strong>.</p>
+<h2 id="les-limites-dune-approche-classique">Les limites d’une approche classique</h2>
+<h3 id="auto-incrémentation">Auto-incrémentation</h3>
+<ul>
+<li>Très prévisible : ces identifiants suivent un ordre strict et séquentiel, ce qui les rend facilement devinables. Un attaquant peut ainsi estimer le volume de données (nombre de commandes, d’utilisateurs, etc.), ou tenter des accès non autorisés par simple incrémentation.</li>
+</ul>
+<h3 id="uuid-notamment-uuidv4">UUID (notamment UUIDv4)</h3>
+<ul>
+<li><strong>Poids élevé</strong> : un UUIDv4 occupe 16 octets, contre 4 octets pour un entier auto-incrémenté (INT). Ce surcoût impacte :
+<ul>
+<li>les performances de la base de données (indexation, tri, recherche)</li>
+<li>l’utilisation mémoire côté application, surtout à grande échelle</li>
+</ul>
+</li>
+<li><strong>Peu lisible et difficile à manipuler</strong> :
+<ul>
+<li>les UUID sont longs, sans structure lisible et difficiles à interpréter pour un humain.</li>
+<li>ils compliquent le debug, l’affichage dans les interfaces, ou la construction d’URLs propres.</li>
+<li>ils ne portent aucune information métier (type d’entité, date de création, tenant, etc.).</li>
+</ul>
+</li>
+<li><strong>Risque (théorique) de collision</strong> :
+<ul>
+<li>bien que rares, les collisions restent possibles si la source d’aléatoire est défaillante.</li>
+<li>même avec un espace d’identifiants très large (128 bits → 3.4 × 10³⁸ possibilités), une application à très haute volumétrie peut atteindre des seuils où ces risques deviennent réels.</li>
+</ul>
+</li>
+</ul>
+<h2 id="présentation-du-gid">Présentation du GID</h2>
+<h3 id="définition">Définition</h3>
+<p>Un <strong>Global ID (GID)</strong> est une représentation unique d’une entité dans une application. Il permet d’identifier de manière fiable et traçable n’importe quel objet métier (utilisateur, commande, document, etc.), tout en tenant compte du <strong>contexte du tenant</strong> (par exemple une organisation ou un client dans une application multi-tenant).</p>
+<p><strong>NB :</strong> un <em>tenant</em> représente une organisation ou un client dans une application <em>multi-tenant</em> (c’est-à-dire une application utilisée par plusieurs organisations).</p>
+<h3 id="objectif-et-justification">Objectif et justification</h3>
+<p>Dans cet article, nous allons manipuler un GID de <strong>24 octets</strong>. Ce format n’est pas un standard : la plupart des technologies utilisent plutôt <strong>16 octets</strong>, tel que défini par les normes <strong>ISO/IEC 11578:1996</strong>, <strong>ITU-T Rec. X.667</strong> et le <strong>RFC 4122</strong> (spécification des UUID).</p>
+<p>Nous faisons le choix d’un GID sur <strong>24 octets (192 bits)</strong> pour répondre à des besoins spécifiques :</p>
+<ul>
+<li>garantir une <strong>unicité globale renforcée</strong>,</li>
+<li>inclure directement des <strong>informations métier</strong> (tenant, type d’entité, timestamp, etc.) dans la structure de l’identifiant.</li>
+<li>Optimiser pour le multi-tenant : éviter les jointures coûteuses pour identifier le tenant d’une entité</li>
+</ul>
+<p><strong>Concernant l’impact performance :</strong> bien que 24 octets soient plus lourds qu’un UUID standard (16 octets), les informations métier intégrées permettent d’éviter de nombreuses jointures SQL, compensant largement ce surcoût. De plus, l’indexation reste efficace grâce à la structure prévisible.</p>
+<h2 id="anatomie-du-gid-explication-binaire">Anatomie du GID (explication binaire)</h2>
+<h3 id="notions-de-base">Notions de base</h3>
+<ul>
+<li><strong>Bit</strong> : la plus petite unité de données, représentant une valeur binaire (0 ou 1).</li>
+<li><strong>Octet</strong> : un regroupement de 8 bits, suffisant pour représenter un caractère ou un élément de données complet.</li>
+</ul>
+<p>En analogie :</p>
+<ul>
+<li>un <strong>bit</strong> est comme une lettre élémentaire</li>
+<li>un <strong>octet</strong> est le plus petit “mot” que l’ordinateur peut manipuler directement.</li>
+</ul>
+<p>Donc :</p>
+<ul>
+<li>2 octets = 16 bits (2 × 8)</li>
+<li>8 octets = 64 bits (8 × 8)</li>
+<li>24 octets = 192 bits (24 × 8)</li>
+</ul>
+<p><strong>Formule générale :</strong></p>
+<img src="/global_id/formule.png" alt="Formule générale"/>
+<h2 id="cas-pratique">Cas pratique</h2>
+<p>Nous allons implémenter un <strong>GID de 24 octets</strong> avec Go, dans un <strong>système multi-tenant</strong>. Chaque bloc de l’identifiant se voit attribuer une plage précise pour reconstituer les 24 octets</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Octets</th><th>Contenu</th><th>Taille</th></tr></thead><tbody><tr><td>0-7</td><td>Tenant ID</td><td>8 octets (64 bits)</td></tr><tr><td>8-9</td><td>Entity Type</td><td>2 octets (16 bits)</td></tr><tr><td>10-17</td><td>Timestamp</td><td>8 octets (64 bits)</td></tr><tr><td>18-23</td><td>Random</td><td>6 octets (48 bits)</td></tr></tbody></table>
+<p>Ainsi, le GID contient à la fois des informations métier (tenant, type), un timestamp pour la traçabilité, et des données aléatoires pour garantir l’unicité globale.</p>
+<h3 id="1-déclaration-des-variables">1. Déclaration des variables</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">package</span><span style="color:#B392F0"> gid</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;</span><span style="color:#B392F0">crypto/rand</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;</span><span style="color:#B392F0">encoding/binary</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;</span><span style="color:#B392F0">encoding/hex</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;</span><span style="color:#B392F0">strings</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">    &quot;</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#79B8FF">    GIDSize</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 24</span><span style="color:#6A737D"> // 192 bits au total</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#B392F0">    GID</span><span style="color:#E1E4E8">      [</span><span style="color:#B392F0">GIDSize</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">byte</span><span style="color:#6A737D"> // GID = tableau de 24 octets</span></span>
+<span class="line"><span style="color:#B392F0">    TenantID</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">byte</span><span style="color:#6A737D">       // Tenant sur 8 octets</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-initialisation-du-gid">2. Initialisation du GID</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">package</span><span style="color:#B392F0"> gid</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> NewGID</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">tenantID</span><span style="color:#B392F0"> TenantID</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">entityType</span><span style="color:#F97583"> uint16</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> id </span><span style="color:#B392F0">GID</span><span style="color:#6A737D"> // on initialise un tableau de 24 octets pour notre GID</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="3-séparation-des-blocs-et-construction">3. Séparation des blocs et construction</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">package</span><span style="color:#B392F0"> gid</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> NewGID</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">tenantID</span><span style="color:#B392F0"> TenantID</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">entityType</span><span style="color:#F97583"> uint16</span><span style="color:#E1E4E8">) (</span><span style="color:#B392F0">GID</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">error</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> id </span><span style="color:#B392F0">GID</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 1. Tenant ID (octets 0 à 7)</span></span>
+<span class="line"><span style="color:#6A737D">    // On copie les 8 octets de tenantID dans les 8 premiers octets de id</span></span>
+<span class="line"><span style="color:#B392F0">    copy</span><span style="color:#E1E4E8">(id[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">], tenantID[:])</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 2. Entity Type (octets 8 à 9)</span></span>
+<span class="line"><span style="color:#6A737D">    // - entityType est un uint16 (16 bits = 2 octets)</span></span>
+<span class="line"><span style="color:#6A737D">    // - On l&#39;encode en bytes Big Endian et on l&#39;écrit dans id[8] et id[9]</span></span>
+<span class="line"><span style="color:#E1E4E8">    binary.BigEndian.</span><span style="color:#B392F0">PutUint16</span><span style="color:#E1E4E8">(id[</span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">], entityType)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 3. Timestamp (octets 10 à 17)</span></span>
+<span class="line"><span style="color:#6A737D">    // - On récupère le timestamp actuel en millisecondes</span></span>
+<span class="line"><span style="color:#6A737D">    // - On le convertit en uint64 (64 bits = 8 octets)</span></span>
+<span class="line"><span style="color:#6A737D">    // - On écrit ces 8 octets dans id[10] à id[17]</span></span>
+<span class="line"><span style="color:#E1E4E8">    now </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">Now</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">UnixMilli</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    binary.BigEndian.</span><span style="color:#B392F0">PutUint64</span><span style="color:#E1E4E8">(id[</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">18</span><span style="color:#E1E4E8">], </span><span style="color:#F97583">uint64</span><span style="color:#E1E4E8">(now))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 4. Données aléatoires (octets 18 à 23)</span></span>
+<span class="line"><span style="color:#6A737D">    // - Ces 6 octets servent à garantir l&#39;unicité globale du GID</span></span>
+<span class="line"><span style="color:#6A737D">    // - On les remplit avec des bytes aléatoires</span></span>
+<span class="line"><span style="color:#E1E4E8">    _, err </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> rand.</span><span style="color:#B392F0">Read</span><span style="color:#E1E4E8">(id[</span><span style="color:#79B8FF">18</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">24</span><span style="color:#E1E4E8">])</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> err </span><span style="color:#F97583">!=</span><span style="color:#79B8FF"> nil</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> Nil, fmt.</span><span style="color:#B392F0">Errorf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;failed to generate random bytes: </span><span style="color:#79B8FF">%v</span><span style="color:#9ECBFF">&quot;</span><span style="color:#E1E4E8">, err)</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> id, </span><span style="color:#79B8FF">nil</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="avantages-du-gid">Avantages du GID</h2>
+<ol>
+<li><strong>Traçabilité native</strong> : timestamp intégré pour audit et debug</li>
+<li><strong>Context-aware</strong> : tenant et type d’entité directement accessibles</li>
+<li><strong>Performances</strong> : évite les jointures pour identifier le contexte</li>
+<li><strong>Sécurité</strong> : non-prévisible grâce à la partie aléatoire</li>
+<li><strong>Flexibilité</strong> : format structuré mais extensible</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Le code présenté ici est spécifique à Go, mais le <strong>concept du GID</strong> peut être transposé dans n’importe quel langage.</p>
+<p>L’objectif principal est de <strong>visualiser comment représenter un identifiant global (GID) de manière informative</strong>, en regroupant des <strong>données métier concrètes</strong> (tenant, type d’entité, timestamp) tout en garantissant :</p>
+<ul>
+<li><strong>l’unicité globale</strong>,</li>
+<li>et la <strong>résistance à la prédictibilité</strong>.</li>
+</ul>
+<p>Ainsi, le GID permet de créer des identifiants à la fois <strong>robustes, traçables et utiles pour le business</strong>, tout en restant <strong>optimisés pour une architecture distribuée ou multi-tenant</strong>.</p> </div> <div class="wrapper-outline" data-astro-cid-eomsrdgo> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="ZVczvm" component-url="/_astro/Outline.DpbtxMXy.js" component-export="Outline" renderer-url="/_astro/client.BlaPJyZK.js" props="{&quot;data-astro-cid-eomsrdgo&quot;:[0,true]}" ssr client="load" opts="{&quot;name&quot;:&quot;Outline&quot;,&quot;value&quot;:true}" await-children><div class="outline__wrapper w-max"><ul class="flex flex-col gap-3 px-[4rem]  w-[350px]"></ul></div><!--astro:end--></astro-island> </div> </div> </div> </section>  <div class="container-narrow"> <footer data-astro-cid-bbsqf2va> <div class="container" data-astro-cid-bbsqf2va> <div class="grid" data-astro-cid-bbsqf2va> <div class="left" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>A propos</h4> <p data-astro-cid-bbsqf2va> Ingénieur de formation en réseaux et telecom, j’ai développé une expertise complémentaire en infrastructure logicielle et développement. </p> </div> <div class="extra" data-astro-cid-bbsqf2va> <div class="contacts" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>contact</h4> <ul class="links" data-astro-cid-bbsqf2va> <a href="mailto:contact@eembouz.com" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> contact@eembouz.com </li> </a> </ul> </div> <div class="legacy" data-astro-cid-bbsqf2va> <a href="https://blog.eembouz.com" data-astro-cid-bbsqf2va>blog.eembouz.com</a> <span class="declaration" data-astro-cid-bbsqf2va>Copyright © 2025 elysee Mboussa. All rights reserved.</span> </div> </div> </div> <div class="right" data-astro-cid-bbsqf2va> <div class="contact" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>Réseaux </h4>
+              <ul class="links" data-astro-cid-bbsqf2va> <a href="https://github.com/elyseeMB" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Github </li> </a><a href="https://www.linkedin.com/in/%CE%BEmmanuelito-mboussa-49099932a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Linkedin </li> </a> </ul> </div> </div> </div> </div> </div> </footer>  </div> </div> </div> <script type="module">const a=["en"];function i(n,e){if(e.length!==1)throw new Error("");if(n==null||n.length===0||!e)return n;const l=e.charCodeAt(0);let t=0,o=n.length-1;for(;t<=o&&n.charCodeAt(t)===l;)t++;for(;o>=t&&n.charCodeAt(o)===l;)o--;return n.slice(t,o+1)}function c(){if(localStorage.getItem("lang")===null){for(const e of a)if(navigator.language.includes(e)){if(window.location.href.includes(`/${e}`)){localStorage.setItem("lang",e);continue}localStorage.setItem("lang",e),window.location.href="/"+i(`${e}${window.location.pathname}`,"/")}}}c();export{i as trim};</script></body></html> 

@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="fr"> <title>Load Balancing | Blog</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Load balancing, or load distribution, is a technique utilized to improve the availability, scalability, and resilience of modern web applications by distributing traffic among multiple servers."><link rel="canonical" href="https://blog.eembouz.com/en/articles/load-balancer.html"><meta name="author" content="elysee"><meta property="article:published_time" content="2025-07-21T00:00:00.000Z"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-512.png" sizes="512x512"><link rel="icon" type="image/svg+xml" href="https://blog.eembouz.com/favicon.svg"><link rel="apple-touch-icon" href="https://blog.eembouz.com/apple-touch-icon.png"><link rel="manifest" href="https://blog.eembouz.com/site.webmanifest"><link rel="sitemap" href="https://blog.eembouz.com/sitemap-index.xml"><link rel="icon" type="image/png" href="https://blog.eembouz.com/favicon-96x96.png" sizes="96x96"><link rel="apple-touch-icon" sizes="180x180" href="https://blog.eembouz.com/apple-touch-icon.png"><meta name="theme-color" content="#1e1e1e"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Domine:wght@400..700&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Pridi:wght@200;300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oranienbaum&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet"><meta property="og:type" content="article"><meta property="og:site_name" content="Elysee-Mboussa"><meta property="og:title" content="Load Balancing | Blog"><meta property="og:type" content="website"><meta property="og:description" content="Load balancing, or load distribution, is a technique utilized to improve the availability, scalability, and resilience of modern web applications by distributing traffic among multiple servers."><meta property="og:image" content="/load_balancer/load_balancer.png"><meta property="og:url" content="https://blog.eembouz.com/en/articles/load-balancer.html"><meta name="robots" content="index, follow"><meta name="google-site-verification" content="hyeUNyeanb3BYVbCmMJKMIiXusraMSWPSCNMBn83Sk8"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Load Balancing | Blog"><meta name="twitter:description" content="Load balancing, or load distribution, is a technique utilized to improve the availability, scalability, and resilience of modern web applications by distributing traffic among multiple servers."><meta name="twitter:image" content="/load_balancer/load_balancer.png"><meta name="twitter:site" content="@EmmanuelitoElysee"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Emmanuelito elysee",
+    "url": "https://blog.eembouz.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.eembouz.com",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Emmanuelito Elysee",
+    "url": "https://blog.eembouz.com/",
+    "logo": "https://blog.eembouz.com/favicon-512.png"
+  }
+</script><script type="module" src="/_astro/Scripts.astro_astro_type_script_index_0_lang.BBugtUs8.js"></script><style>span[data-astro-cid-rafwukvt]{font-family:JetBrains Mono!important;letter-spacing:-.5px}
+body .page-wrapper[data-astro-cid-w5xgdjtp]{background:red!important}.container[data-astro-cid-w5xgdjtp],.wrapper-content[data-astro-cid-w5xgdjtp]{overflow:visible}.article__paragraph[data-astro-cid-w5xgdjtp]{padding-block:1rem}.description[data-astro-cid-w5xgdjtp]{padding-block:3rem}.info[data-astro-cid-w5xgdjtp]{display:grid;grid-template-columns:1fr;gap:1rem}.wrapper-content[data-astro-cid-w5xgdjtp]{max-width:700px;display:block}.wrapper-outline[data-astro-cid-w5xgdjtp]{display:none}@media screen and (min-width:1200px){.wrapper-content[data-astro-cid-w5xgdjtp]{width:100%;display:grid!important;grid-template-columns:1fr 550px 1fr!important;padding:0}.wrapper-outline[data-astro-cid-w5xgdjtp]{display:block;grid-column:3;margin-bottom:5rem}.content[data-astro-cid-w5xgdjtp]{width:550px;grid-column:2;padding-bottom:5rem}}.content[data-astro-cid-w5xgdjtp]{padding-bottom:5rem}h1[data-astro-cid-w5xgdjtp]{text-align:left;padding-top:2rem}.cover[data-astro-cid-w5xgdjtp]{width:100%}.meta[data-astro-cid-w5xgdjtp]{display:flex;flex-direction:column;font-size:.9rem;gap:.5rem;padding-bottom:4rem;font-family:JetBrains Mono!important;>[data-astro-cid-w5xgdjtp]{font-family:JetBrains Mono!important;letter-spacing:-.5px}}@media screen and (max-width:750px){.wrapper-content[data-astro-cid-w5xgdjtp]{padding-inline:var(--container-padding)}}@media screen and (max-width:590px){.container-narrow[data-astro-cid-w5xgdjtp] .info[data-astro-cid-w5xgdjtp] .tags[data-astro-cid-w5xgdjtp]{align-items:flex-start;flex-direction:column}}@media screen and (min-width:1300px){.heading[data-astro-cid-w5xgdjtp]{img{max-height:500px}}}
+</style>
+<link rel="stylesheet" href="/_astro/505.C6OAiFHz.css"><body> <div class="bg-noise"> <div class="page-wrapper"> <div class="container-narrow" data-astro-cid-j2devmb2> <header data-astro-cid-6sev2il6> <div class="container" data-astro-cid-6sev2il6> <div class="wrapper" data-astro-cid-6sev2il6> <div class="flex" data-astro-cid-6sev2il6> <div class="logo" data-astro-cid-6sev2il6> <a href="/" data-astro-cid-6sev2il6> <svg width="40" height="40" id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" data-astro-cid-6sev2il6> <defs data-astro-cid-6sev2il6> <style>
+                  .cls-1,
+                  .cls-2 {
+                    stroke-width: 0px;
+                  }
+
+                  .cls-2 {
+                    fill: #007aec;
+                  }
+                </style> </defs> <circle class="cls-2" cx="6" cy="6" r="5.5" data-astro-cid-6sev2il6></circle> <path class="cls-1" d="m6,1c2.76,0,5,2.24,5,5s-2.24,5-5,5S1,8.76,1,6,3.24,1,6,1m0-1C2.69,0,0,2.69,0,6s2.69,6,6,6,6-2.69,6-6S9.31,0,6,0h0Z" data-astro-cid-6sev2il6></path> </svg></a> </div>  <div class="actions" data-astro-cid-j2devmb2> <a href="https://eembouz.com" data-astro-cid-j2devmb2> Portfolio</a> <a href="/en/articles" data-astro-cid-j2devmb2> all my articles </a> </div>  </div> </div> </div> </header>  </div>   <section data-markdown data-astro-cid-w5xgdjtp> <div class="container" data-astro-cid-w5xgdjtp> <div class="container-narrow" data-astro-cid-w5xgdjtp> <div class="info" data-astro-cid-w5xgdjtp> <h1 data-astro-cid-w5xgdjtp>Load Balancing</h1> <div class="meta" data-astro-cid-w5xgdjtp> <span data-astro-cid-w5xgdjtp> July 21, 2025 ·
+Elysee </span> <span data-astro-cid-rafwukvt> 6 min read </span>  <div class="tags" data-astro-cid-w5xgdjtp> <div class="tag" data-astro-cid-w5xgdjtp>devops</div> </div> </div> </div> </div> </div> <div class="container" data-astro-cid-w5xgdjtp> <div class="container-narrow" data-astro-cid-w5xgdjtp> <div class="heading" data-astro-cid-w5xgdjtp> <div class="cover" data-astro-cid-w5xgdjtp> <!-- <img src={thumbnail} alt="" /> --> </div> </div> </div> </div> <div class="container" data-astro-cid-w5xgdjtp> <div class="wrapper-content" data-astro-cid-w5xgdjtp> <div class="content prose prose-md" data-astro-cid-w5xgdjtp> <div class="blog-single"><p>Daily, thousands of users connect to consult their
+emails, exchange messages, or work on their projects. An
+incalculable number of network packets transit each second between thousands of
+servers, all optimized to respond as rapidly as possible and
+efficiently distribute resources.</p><p>However, <strong>user multiplication</strong> entails <strong>simultaneous
+requests</strong>, overload risks, slowdowns, or even failures.</p><p>In this performance and reactivity race, numerous techniques
+are implemented to guarantee fluid and balanced load
+distribution: <strong>load balancing</strong> constitutes one of the keys.</p><p><strong>Load Balancing</strong> is a key process in computing, frequently utilized
+in distributed systems architecture. It enables distributing a set
+of tasks or requests across multiple resources (such as servers) to
+<strong>reduce overload</strong>, <strong>improve global performance</strong>, and
+<strong>guarantee high availability</strong>. It primarily applies <strong>at the
+application protocol level</strong> such as <strong>HTTP/HTTPS, FTP, SMTP, DNS, SSH</strong>,
+etc., to efficiently manage network traffic.</p><img src="/load_balancer/illustration_load-balancer.png" alt="Diagram of a load balancer distributing traffic"/><p>Concretely, instead of each client directly addressing a given
+server, all requests are sent to a <strong>central network address</strong> —
+that of the load balancer. This then <strong>redirects traffic</strong>
+toward available servers according to different criteria (algorithms, current
+load, availability, etc.).</p><p>This mechanism prevents overloads, improves system global performance, and guarantees high service availability.</p><h2 id="load-balancing-level-4-vs-level-7">Load Balancing: Level 4 vs. Level 7</h2><p>Several load balancer types exist according to the <strong>OSI model</strong> level on
+which they operate:</p><ul>
+<li><strong>Level 4 (transport)</strong>: balancing occurs based on IP addresses, TCP or UDP ports. The load balancer doesn’t “see” request content; it merely routes traffic according to low-level rules.<br/>
+Example: <strong>HAProxy</strong> or <strong>AWS Network Load Balancer</strong>.</li>
+<li><strong>Level 7 (application)</strong>: balancing occurs by analyzing HTTP request content, such as URLs, cookies, or headers. This enables finer and more contextual distribution.<br/>
+Example: <strong>NGINX</strong>, <strong>Traefik</strong>, or <strong>AWS Application Load Balancer</strong>.</li>
+</ul><p>This choice depends on application type, customization requirements, and expected performance.</p><h2 id="principal-balancing-algorithms">Principal Balancing Algorithms:</h2><h3 id="round-robin-dns">Round Robin DNS:</h3><img src="/load_balancer/round_robin.png" alt="round_robin"/><p><strong>Round Robin DNS</strong> is a load balancing algorithm that enables
+distributing traffic among multiple servers by associating <strong>multiple IP
+addresses</strong> with a <strong>single domain name</strong>.</p><p>Unlike other methods, this technique <strong>requires no dedicated
+physical equipment</strong>. It relies on <strong>authoritative DNS
+server</strong> functioning (<a href="https://www.cloudflare.com/learning/dns/dns-server-types/#authoritative-nameserver">authoritative
+nameserver</a>).</p><p>It is easily implemented via your provider’s DNS management interface:</p><ul>
+<li>by adding <strong>multiple A records</strong> (for IPv4),</li>
+<li>or <strong>AAAA records</strong> (for IPv6).</li>
+</ul><p><strong>Advantage</strong>: configuration simplicity.<br/>
+<strong>Limitation</strong>: no intelligent real load management (DNS doesn’t “see” if a server is saturated or unavailable).</p><h2 id="software-and-hardware-load-balancers">Software and Hardware Load Balancers:</h2><h2 id="-software">— Software:</h2><h3 id="nginx"><a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/">Nginx</a>:</h3><p>nginx is open-source software functioning as a <strong>web server</strong>,
+<strong>reverse proxy</strong>, and <strong>load balancer</strong>. It is recognized for its <strong>low
+memory consumption</strong> and <strong>high speed</strong>, making it a
+preferred choice in high-traffic environments.</p><p>To configure Nginx as a load balancer, the <code>upstream</code> directive is used in the configuration file, enabling declaration of multiple backend servers:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">http</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    upstream</span><span style="color:#B392F0"> backend_servers </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">        server</span><span style="color:#E1E4E8"> backend1.example.com;</span></span>
+<span class="line"><span style="color:#F97583">        server</span><span style="color:#E1E4E8"> backend2.example.com;</span></span>
+<span class="line"><span style="color:#F97583">        server</span><span style="color:#E1E4E8"> backend3.example.com;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        listen </span><span style="color:#79B8FF">80</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">        location</span><span style="color:#B392F0"> / </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">            proxy_pass </span><span style="color:#E1E4E8">http://backend_servers;</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><p>By default, Nginx applies <strong>round robin</strong>, but also supports:</p><ul>
+<li><code>least_conn</code>: toward the server with fewest active connections</li>
+<li><code>ip_hash</code>: to maintain session on the same server</li>
+</ul><h2 id="choosing-a-load-balancing-method">Choosing a Load Balancing Method:</h2><p><a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#choosing-a-load-balancing-method" title="Choosing a Load Balancing Method">NGINX</a> supports four load balancing methods: Round Robin, Least Connections, IP Hash, and Generic Hash.</p><blockquote>
+<p><strong>Note:</strong> When configuring a method other than Round Robin, place the corresponding directive (<a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#hash"><code>hash</code></a>, <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#ip_hash"><code>ip_hash</code></a>, <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#least_conn"><code>least_conn</code></a>, <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#least_time"><code>least_time</code></a>, or <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#random"><code>random</code></a>) above the <code>server</code> directive list in the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream"><code>upstream {}</code></a> block.</p>
+</blockquote><p>1- <strong>Round Robin (Default)</strong></p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">upstream</span><span style="color:#B392F0"> backend </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#6A737D">   # no load balancing method is specified for Round Robin</span></span>
+<span class="line"><span style="color:#F97583">   server</span><span style="color:#E1E4E8"> backend1.example.com;</span></span>
+<span class="line"><span style="color:#F97583">   server</span><span style="color:#E1E4E8"> backend2.example.com;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><p>Unlike Round Robin DNS, reverse proxies like <strong>NGINX</strong> enable <strong>more intelligent</strong> and dynamic load balancing, with consideration of active connections, client IP address, or hash key.</p><p>2- <strong><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#least_conn">Least
+Connections</a> –</strong>
+A request is sent to the server with fewest active connections. This
+method also considers <a href="https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/#weights">server
+weight</a>.</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">upstream</span><span style="color:#B392F0"> backend </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    least_conn</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend1.example.com;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend2.example.com;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><p>3- <strong><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#ip_hash">IP
+Hash</a> –</strong>
+The server to which a request is sent is determined from the
+client IP address. In this case, either the first three octets of the IPv4 address
+or the entire IPv6 address are used to calculate the hash value.
+The method guarantees that requests from the same address reach
+the same server, unless unavailable.</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">upstream</span><span style="color:#B392F0"> backend </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    ip_hash</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend1.example.com;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend2.example.com;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><p>If a server must be temporarily removed from load-balancing
+rotation, it can be marked with
+the <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#down">down</a> parameter.
+This preserves current client IP address hashing. Requests that
+should have been processed by this server are automatically sent to the next
+server in the group.</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">upstream</span><span style="color:#B392F0"> backend </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend1.example.com;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend2.example.com;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend3.example.com down;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><p>4- <strong>Generic <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#hash">Hash</a> –</strong>
+The server to which a request is sent is determined from a
+user-defined key. This key can be a text string, a
+variable, or a combination. For example, the key can be a paired source IP
+address and port. This example uses a URI:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">upstream</span><span style="color:#B392F0"> backend </span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">    hash </span><span style="color:#E1E4E8">$request_uri consistent;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend1.example.com;</span></span>
+<span class="line"><span style="color:#F97583">    server</span><span style="color:#E1E4E8"> backend2.example.com;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><p>The optional <a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#hash">consistent</a> parameter to the <code>hash</code> directive enables <a href="http://www.last.fm/user/RJ/journal/2007/04/10/rz_libketama_-_a_consistent_hashing_algo_for_memcache_clients">ketama</a> consistent hash load balancing. Requests are uniformly distributed across all upstream servers based on user-defined hashed key value. If an upstream server is added or removed from an upstream group, only a few keys are remapped, minimizing cache misses. This is useful for load-balancing cache servers or other applications that accumulate state.</p><h3 id="haproxy"><a href="https://www.haproxy.com/blog/haproxy-configuration-basics-load-balance-your-servers">HAProxy</a>:</h3><p>HAProxy is free, open-source software offering high availability and load balancing for TCP and HTTP-based applications. It distributes incoming network traffic across multiple servers to guarantee optimal utilization and scalability.</p><p><strong>HAProxy</strong> and <strong>NGINX</strong> can both perform load balancing,
+but they have <strong>important differences</strong> in their design,
+behavior, and preferred use cases.</p><h2 id="nginx-vs-haproxy-usage-comparison">NGINX vs HAProxy: Usage Comparison</h2><div class="table-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Criterion</th><th><strong>NGINX</strong></th><th><strong>HAProxy</strong></th></tr></thead><tbody><tr><td><strong>Primary function</strong></td><td>HTTP server + reverse proxy</td><td>Load balancer (specialized)</td></tr><tr><td><strong>Raw performance</strong></td><td>Excellent in HTTP, good generalist</td><td>Better on high network loads</td></tr><tr><td><strong>Balancing level</strong></td><td>L7 (HTTP) + partial L4</td><td>L4 (TCP) + highly optimized L7 (HTTP)</td></tr><tr><td><strong>Native HTTPS support</strong></td><td>Yes (certbot, etc.)</td><td>Possible, but more complex</td></tr><tr><td><strong>Configuration</strong></td><td>Simple, readable config files</td><td>More verbose but very precise</td></tr><tr><td><strong>Monitoring / stats</strong></td><td>Basic (status module)</td><td>Very detailed (integrated dashboard)</td></tr><tr><td><strong>Frequent usage</strong></td><td>Web reverse proxy, CDN, cache</td><td>Pure load balancing, high availability</td></tr><tr><td><strong>Memory consumption</strong></td><td>Low</td><td>Ultra-optimized also</td></tr><tr><td><strong>Hot reload / live update</strong></td><td>Not always without interruption</td><td>Yes, without disturbing connections</td></tr></tbody></table></div><h2 id="hardware-load-balancer">Hardware Load Balancer</h2><p>In physical form, hardware versions are physical devices installed in specific datacenters. Although capable of handling and dispatching large traffic volumes across different networks, they offer less flexibility and their costs are quite elevated.</p><div class="table-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody><tr><td><strong>F5 BIG-IP</strong></td><td>Most recognized. Widely used in enterprises. Enables L4 and L7 with advanced functions (SSL offloading, application firewall, etc.).</td></tr><tr><td><strong>Cisco ACE / ACI</strong></td><td>Integrated into Cisco network solutions. Less common today, but very robust in certain data centers.</td></tr><tr><td><strong>Barracuda Load Balancer ADC</strong></td><td>Known for simplicity, good quality/price ratio, suitable for SMEs. Also offers security functions.</td></tr></tbody></table></div><hr/><blockquote>
+<p>In this article, we clarified and explained some of the most utilized <strong>load balancing</strong> algorithms.<br/>
+However, this list is far from exhaustive: tools like <strong>HAProxy</strong> offer other advanced distribution methods, as well as key functionalities such as:</p>
+<ul>
+<li><strong>health checks</strong> (automatic server state verification),</li>
+<li><strong>redundancy</strong> with load balancers in <strong>active/passive</strong> mode,</li>
+<li><strong>automatic recovery</strong> in case of failure.</li>
+</ul>
+<p>Commercial solutions like <strong>NGINX Plus</strong> also offer extended functionalities, including fine session management, real-time metrics, or native support for specific protocols.</p>
+</blockquote><p>In summary, <strong>load balancing</strong> is an essential component of modern architectures, guaranteeing <strong>performance, reliability, and scalability</strong>. Whether implemented through software solutions like <strong>NGINX</strong> or <strong>HAProxy</strong>, or specialized hardware, it plays an orchestral conductor role between users and servers. The choice of the appropriate algorithm or solution will always depend on <strong>usage context</strong>, <strong>budget</strong>, and <strong>technical constraints</strong>.</p></div> </div> <div class="wrapper-outline" data-astro-cid-w5xgdjtp> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="1XAmsF" component-url="/_astro/Outline.DpbtxMXy.js" component-export="Outline" renderer-url="/_astro/client.BlaPJyZK.js" props="{&quot;data-outline&quot;:[0,true],&quot;data-astro-cid-w5xgdjtp&quot;:[0,true]}" ssr client="load" opts="{&quot;name&quot;:&quot;Outline&quot;,&quot;value&quot;:true}" await-children><div class="outline__wrapper w-max"><ul class="flex flex-col gap-3 px-[4rem]  w-[350px]"></ul></div><!--astro:end--></astro-island> </div> </div> </div> </section>  <div class="container-narrow"> <footer data-astro-cid-bbsqf2va> <div class="container" data-astro-cid-bbsqf2va> <div class="grid" data-astro-cid-bbsqf2va> <div class="left" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>About</h4> <p data-astro-cid-bbsqf2va> Trained as a network and telecom engineer, I have developed complementary expertise in software infrastructure and development. </p> </div> <div class="extra" data-astro-cid-bbsqf2va> <div class="contacts" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>contact</h4> <ul class="links" data-astro-cid-bbsqf2va> <a href="mailto:contact@eembouz.com" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> contact@eembouz.com </li> </a> </ul> </div> <div class="legacy" data-astro-cid-bbsqf2va> <a href="https://blog.eembouz.com" data-astro-cid-bbsqf2va>blog.eembouz.com</a> <span class="declaration" data-astro-cid-bbsqf2va>Copyright © 2025 elysee Mboussa. All rights reserved.</span> </div> </div> </div> <div class="right" data-astro-cid-bbsqf2va> <div class="contact" data-astro-cid-bbsqf2va> <div class="info" data-astro-cid-bbsqf2va> <h4 data-astro-cid-bbsqf2va>Networking </h4>
+              <ul class="links" data-astro-cid-bbsqf2va> <a href="https://github.com/elyseeMB" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Github </li> </a><a href="https://www.linkedin.com/in/%CE%BEmmanuelito-mboussa-49099932a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" data-astro-cid-bbsqf2va> <li data-astro-cid-bbsqf2va> Linkedin </li> </a> </ul> </div> </div> </div> </div> </div> </footer>  </div> </div> </div> <script type="module">const a=["en"];function i(n,e){if(e.length!==1)throw new Error("");if(n==null||n.length===0||!e)return n;const l=e.charCodeAt(0);let t=0,o=n.length-1;for(;t<=o&&n.charCodeAt(t)===l;)t++;for(;o>=t&&n.charCodeAt(o)===l;)o--;return n.slice(t,o+1)}function c(){if(localStorage.getItem("lang")===null){for(const e of a)if(navigator.language.includes(e)){if(window.location.href.includes(`/${e}`)){localStorage.setItem("lang",e);continue}localStorage.setItem("lang",e),window.location.href="/"+i(`${e}${window.location.pathname}`,"/")}}}c();export{i as trim};</script></body></html> 
