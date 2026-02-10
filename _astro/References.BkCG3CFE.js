@@ -1,0 +1,1 @@
+import{d as r,y as n}from"./hooks.module.WNmjjaza.js";import{u as o}from"./jsxRuntime.module.DyQSt29u.js";import"./preact.module.D9mvYqus.js";function f({references:t}){const[c,s]=r();return n(()=>{const e=document.querySelectorAll(".content a");console.log(e)},[]),o("div",{children:"references"})}export{f as References};
